@@ -1,7 +1,9 @@
 import { Helmet } from 'react-helmet-async';
 import Breadcrumb from '@/components/Breadcrumb';
+import { useScrollRestoration } from '@/hooks/useScrollRestoration';
 
 export default function PrivacyPolicy() {
+  useScrollRestoration();
   return (
     <>
       <Helmet>

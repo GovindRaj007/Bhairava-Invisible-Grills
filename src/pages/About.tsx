@@ -20,6 +20,7 @@ const stats = [
 ];
 
 export default function About() {
+  useScrollRestoration();
   return (
     <>
       <Helmet>

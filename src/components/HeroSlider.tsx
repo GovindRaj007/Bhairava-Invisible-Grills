@@ -48,7 +48,7 @@ export default function HeroSlider() {
 
   return (
     <section
-      className="relative h-screen w-full overflow-hidden"
+      className="relative h-[100svh] min-h-[600px] max-h-[800px] md:min-h-[600px] md:max-h-[900px] w-full overflow-hidden"
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
@@ -61,7 +61,7 @@ export default function HeroSlider() {
           <img
             src={slide.image}
             alt={slide.label}
-            className="absolute inset-0 w-full h-full object-cover"
+            className="absolute inset-0 w-full h-full "
             loading={i === 0 ? 'eager' : 'lazy'}
             width={1920}
             height={1080}
@@ -72,7 +72,7 @@ export default function HeroSlider() {
               background: 'linear-gradient(135deg, rgba(26,26,26,0.88) 40%, rgba(245,168,0,0.18) 100%)',
             }}
           />
-          <div className="relative z-10 flex flex-col justify-center h-full container mx-auto px-4 md:px-8">
+          <div className="relative z-10 flex flex-col justify-center h-full container mx-auto px-4 md:px-8 mt-[-2rem]">
             <div className="max-w-2xl">
               <span className="golden-label mb-4 block">{slide.label}</span>
               <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-secondary-foreground mb-4 leading-tight">
@@ -99,13 +99,13 @@ export default function HeroSlider() {
         </div>
       ))}
       {/* Dot indicators */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-3">
+      <div className="absolute bottom-[13%] md:bottom-[15%] left-1/2 z-20 flex -translate-x-1/2 gap-2 md:gap-3">
         {slides.map((_, i) => (
           <button
             key={i}
             onClick={() => goTo(i)}
-            className={`w-3 h-3 rounded-full transition-all duration-300 ${
-              i === current ? 'bg-primary scale-125' : 'bg-secondary-foreground/40'
+            className={`h-2 md:h-3 rounded-full transition-all duration-300 ${
+              i === current ? 'w-8 md:w-10 bg-primary shadow-lg shadow-primary/50' : 'w-2 md:w-3 bg-white/40 hover:bg-white/60 hover:scale-125'
             }`}
             aria-label={`Go to slide ${i + 1}`}
           />

@@ -3,6 +3,7 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 
 export default defineConfig({
+  appType: 'spa',
   plugins: [react()],
   resolve: {
     alias: {
@@ -11,5 +12,8 @@ export default defineConfig({
   },
   server: {
     port: 5173,
+    middlewareMode: false,
+    // Ensure all non-existent routes fall back to index.html
+    historyApiFallback: true,
   },
 });

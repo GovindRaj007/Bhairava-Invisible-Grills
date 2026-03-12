@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { Star } from 'lucide-react';
 
 const testimonials = [
@@ -12,15 +12,32 @@ const testimonials = [
 
 export default function Testimonials() {
   const scrollRef = useRef<HTMLDivElement>(null);
-  const [touchStart, setTouchStart] = useState(0);
+  const [touchState, setTouchState] = useState({ start: 0, isScrolling: false });
 
-  const handleTouchStart = (e: React.TouchEvent) => setTouchStart(e.touches[0].clientX);
-  const handleTouchEnd = (e: React.TouchEvent) => {
-    if (!scrollRef.current) return;
-    const diff = touchStart - e.changedTouches[0].clientX;
-    if (Math.abs(diff) > 30) {
-      scrollRef.current.scrollBy({ left: diff > 0 ? 300 : -300, behavior: 'smooth' });
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchState({ start: e.touches[0].clientX, isScrolling: false });
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    const diff = Math.abs(e.touches[0].clientX - touchState.start);
+    if (diff > 5) {
+      setTouchState((prev) => ({ ...prev, isScrolling: true }));
     }
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (!scrollRef.current || !touchState.isScrolling) return;
+    
+    const diff = touchState.start - e.changedTouches[0].clientX;
+    const scrollAmount = diff > 0 ? 340 : -340; // Card width + gap
+    
+    // Use requestAnimationFrame for smooth native scrolling
+    requestAnimationFrame(() => {
+      scrollRef.current?.scrollBy({ 
+        left: scrollAmount, 
+        behavior: 'smooth' 
+      });
+    });
   };
 
   return (
@@ -35,8 +52,9 @@ export default function Testimonials() {
         <div
           ref={scrollRef}
           onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
-          className="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory no-scrollbar"
+          className="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory no-scrollbar scroll-smooth"
         >
           {testimonials.map((t, i) => (
             <div

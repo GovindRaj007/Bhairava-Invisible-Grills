@@ -7,6 +7,7 @@ import Testimonials from '@/components/Testimonials';
 import ServiceAreaChennai from '@/components/ServiceAreaChennai';
 import CTASection from '@/components/CTASection';
 import { BUSINESS } from '@/data/services';
+import { useScrollRestoration } from '@/hooks/useScrollRestoration';
 
 const localBusinessJsonLd = {
   '@context': 'https://schema.org',
@@ -26,6 +27,8 @@ const localBusinessJsonLd = {
 };
 
 export default function Index() {
+  useScrollRestoration();
+  
   return (
     <>
       <Helmet>

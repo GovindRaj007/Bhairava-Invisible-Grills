@@ -3,8 +3,10 @@ import { BUSINESS } from '@/data/services';
 import { Phone, Mail, MapPin, Clock } from 'lucide-react';
 import Breadcrumb from '@/components/Breadcrumb';
 import { useState } from 'react';
+import { useScrollRestoration } from '@/hooks/useScrollRestoration';
 
 export default function Contact() {
+  useScrollRestoration();
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {

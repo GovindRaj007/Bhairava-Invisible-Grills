@@ -1,4 +1,5 @@
 import { useParams } from 'react-router-dom';
+import { useScrollRestoration } from '@/hooks/useScrollRestoration';
 import { Helmet } from 'react-helmet-async';
 import { getServiceBySlug } from '@/data/services';
 import { serviceImages, serviceCardImages } from '@/data/images';
@@ -11,6 +12,7 @@ import * as LucideIcons from 'lucide-react';
 import NotFound from './NotFound';
 
 export default function ServicePage() {
+  useScrollRestoration();
   const { categorySlug, serviceSlug } = useParams<{ categorySlug: string; serviceSlug: string }>();
   const result = categorySlug && serviceSlug ? getServiceBySlug(categorySlug, serviceSlug) : null;
 

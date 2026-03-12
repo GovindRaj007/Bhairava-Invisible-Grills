@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { serviceCategories } from '@/data/services';
 import { serviceCardImages } from '@/data/images';
+import { ArrowRight } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import { Shield, ShieldCheck, Shirt, Trophy } from 'lucide-react';
 
 const iconMap: Record<string, React.ElementType> = { Shield, ShieldCheck, Shirt, Trophy };
@@ -29,13 +31,21 @@ export default function ServiceCategories() {
   const activeCat = serviceCategories.find((c) => c.slug === active)!;
 
   return (
-    <section id="services" className="section-light pt-16 md:pt-24">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <span className="golden-label mb-2 block">Our Services</span>
-          <h2 className="font-heading text-3xl md:text-4xl font-extrabold text-foreground">
-            Solutions Built Around Your Safety
+    <section id="services" className="py-8 md:py-12">
+      <div className="absolute inset-0 grid-pattern opacity-50" />
+      <div className="container relative z-10">
+        {/* Section Header */}
+        <div className="mx-auto mb-12 max-w-3xl text-center">
+          <span className="mb-4 inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
+            Our Services
+          </span>
+          <h2 className="mb-4 font-heading text-3xl font-bold text-foreground md:text-4xl">
+            Complete Safety Solutions for Your Property
           </h2>
+          <p className="text-lg text-muted-foreground">
+            From invisible grills to ceiling hangers, we provide comprehensive 
+            products tailored to your specific needs and requirements.
+          </p>
         </div>
 
         {/* Category tabs - equal size cards */}
@@ -68,34 +78,70 @@ export default function ServiceCategories() {
           })}
         </div>
 
-        {/* Active category services */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 animate-fade-in" key={active}>
-          {activeCat.subServices.map((sub) => (
+        {/* Active category services - New card design */}
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 animate-fade-in" key={active}>
+          {activeCat.subServices.map((service) => (
             <Link
-              key={sub.slug}
-              to={`/services/${activeCat.slug}/${sub.slug}`}
-              className="group rounded-lg overflow-hidden bg-card shadow-sm hover:shadow-md transition-all duration-300 card-hover"
+              key={service.slug}
+              to={`/services/${activeCat.slug}/${service.slug}`}
+              className="group relative overflow-hidden rounded-2xl transition-all hover:-translate-y-1 hover:shadow-xl flex flex-col h-full"
             >
-              <div className="relative h-[14rem] overflow-hidden">
+              {/* Service Image */}
+              <div className="relative h-40 overflow-hidden">
                 <img
-                  src={serviceCardImages[`${activeCat.slug}/${sub.slug}`]}
-                  alt={sub.name}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  src={serviceCardImages[`${activeCat.slug}/${service.slug}`]}
+                  alt={service.name}
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
                   loading="lazy"
                   width={400}
-                  height={200}
+                  height={160}
                 />
-                <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(26,26,26,0.75) 0%, transparent 100%)' }} />
-                <div className="absolute bottom-0 left-0 right-0 p-4">
-                  <p className="font-heading text-sm font-bold text-secondary-foreground">{sub.name}</p>
-                </div>
+                {/* Gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[hsl(222,47%,11%,0.7)]" />
+                {/* Badge */}
+                <span className="absolute right-3 top-3 rounded-full bg-primary px-3 py-1 text-xs font-medium text-white">
+                  Popular
+                </span>
               </div>
-              <div className="p-4">
-                <p className="text-xs text-muted-foreground mb-3">{sub.description}</p>
-                <span className="text-primary text-xs font-semibold">Learn More →</span>
+
+              {/* Content with gradient background */}
+              <div className="bg-gradient-to-br from-[hsl(222,47%,11%)] via-[hsl(217,33%,17%)] to-[hsl(215,25%,22%)] p-5 flex flex-col flex-1">
+                {/* Title */}
+                <h3 className="mb-2 font-heading text-lg font-semibold text-white">
+                  {service.name}
+                </h3>
+                
+                {/* Description */}
+                <p className="mb-4 text-sm text-white/70 line-clamp-3">{service.description}</p>
+
+                {/* Features */}
+                <ul className="mb-4 space-y-1">
+                  {service.benefits.slice(0, 3).map((feature, idx) => (
+                    <li key={idx} className="flex items-center gap-2 text-xs text-white/60">
+                      <div className="h-1.5 w-1.5 rounded-full bg-primary" />
+                      {feature.title}
+                    </li>
+                  ))}
+                </ul>
+
+                {/* Link */}
+                <span className="inline-flex items-center gap-1 text-sm font-medium text-primary transition-colors group-hover:text-primary mt-auto">
+                  Learn More
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </span>
               </div>
             </Link>
           ))}
+        </div>
+
+        {/* CTA */}
+        <div className="mt-12 text-center">
+          <Button size="lg" className="bg-primary text-white hover:bg-primary/90" asChild>
+            <Link to="/contact" className="flex items-center gap-2">
+              Request Free Site Visit
+              <ArrowRight className="h-5 w-5" />
+            </Link>
+          </Button>
         </div>
       </div>
     </section>
