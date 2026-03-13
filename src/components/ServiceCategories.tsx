@@ -84,6 +84,7 @@ export default function ServiceCategories() {
             <Link
               key={service.slug}
               to={`/services/${activeCat.slug}/${service.slug}`}
+              onClick={() => window.scrollTo(0, 0)}
               className="group relative overflow-hidden rounded-2xl transition-all hover:-translate-y-1 hover:shadow-xl flex flex-col h-full"
             >
               {/* Service Image */}
@@ -105,7 +106,7 @@ export default function ServiceCategories() {
               </div>
 
               {/* Content with gradient background */}
-              <div className="bg-gradient-to-br from-[hsl(222,47%,11%)] via-[hsl(217,33%,17%)] to-[hsl(215,25%,22%)] p-5 flex flex-col flex-1">
+              <div className="bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 p-5 flex flex-col flex-1">
                 {/* Title */}
                 <h3 className="mb-2 font-heading text-lg font-semibold text-white">
                   {service.name}
@@ -137,7 +138,7 @@ export default function ServiceCategories() {
         {/* CTA */}
         <div className="mt-12 text-center">
           <Button size="lg" className="bg-primary text-white hover:bg-primary/90" asChild>
-            <Link to="/contact" className="flex items-center gap-2">
+            <Link to="/contact" onClick={() => window.scrollTo(0, 0)} className="flex items-center gap-2">
               Request Free Site Visit
               <ArrowRight className="h-5 w-5" />
             </Link>

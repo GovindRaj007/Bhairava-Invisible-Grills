@@ -34,7 +34,7 @@ export const BUSINESS = {
   address: "Chennai, Tamil Nadu",
   hours: "Mon–Sat, 9AM–7PM",
   city: "Chennai",
-  areas: ["Anna Nagar", "Velachery", "OMR", "T. Nagar", "Adyar", "Tambaram", "Porur", "Nungambakkam"],
+  areas: ["Anna Nagar", "Velachery", "OMR", "T. Nagar", "Adyar", "Tambaram", "Porur", "Nungambakkam","All of Chennai"],
 };
 
 export const serviceCategories: ServiceCategory[] = [

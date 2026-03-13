@@ -2,6 +2,7 @@ import { Helmet } from 'react-helmet-async';
 import { BUSINESS, serviceCategories } from '@/data/services';
 import { Shield, ShieldCheck, Eye, Users, Award, Clock, CheckCircle, Phone, Mail, MapPin } from 'lucide-react';
 import CTASection from '@/components/CTASection';
+import { useScrollRestoration } from '@/hooks/useScrollRestoration';
 
 const values = [
   { icon: Shield, title: 'Safety First', description: 'Every product and installation is designed with one goal — keeping your family safe.' },

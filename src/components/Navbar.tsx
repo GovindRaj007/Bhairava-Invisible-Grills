@@ -50,7 +50,7 @@ export default function Navbar() {
 
           {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center gap-8">
-            <Link to="/" className="text-foreground hover:text-primary text-sm font-medium transition-colors">
+            <Link to="/" onClick={() => window.scrollTo(0, 0)} className="text-foreground hover:text-primary text-sm font-medium transition-colors">
               Home
             </Link>
             <div
@@ -73,6 +73,7 @@ export default function Navbar() {
                             <li key={sub.slug}>
                               <Link
                                 to={`/services/${cat.slug}/${sub.slug}`}
+                                onClick={() => window.scrollTo(0, 0)}
                                 className="text-secondary-foreground/70 hover:text-primary text-xs transition-colors"
                               >
                                 {sub.name}
@@ -86,16 +87,16 @@ export default function Navbar() {
                 </div>
               )}
             </div>
-            <Link to="/about" className="text-foreground hover:text-primary text-sm font-medium transition-colors">
+            <Link to="/about" onClick={() => window.scrollTo(0, 0)} className="text-foreground hover:text-primary text-sm font-medium transition-colors">
               About
             </Link>
-            <Link to="/contact" className="text-foreground hover:text-primary text-sm font-medium transition-colors">
+            <Link to="/contact" onClick={() => window.scrollTo(0, 0)} className="text-foreground hover:text-primary text-sm font-medium transition-colors">
               Contact
             </Link>
           </nav>
 
           {/* Desktop CTA */}
-          <Link to="/contact" className="hidden lg:block btn-golden text-sm py-2 px-5">
+          <Link to="/contact" onClick={() => window.scrollTo(0, 0)} className="hidden lg:block btn-golden text-sm py-2 px-5">
             Get Free Quote
           </Link>
 
@@ -119,7 +120,10 @@ export default function Navbar() {
                 {/* Home */}
                 <Link 
                   to="/" 
-                  onClick={() => setMobileOpen(false)}
+                  onClick={() => {
+                    setMobileOpen(false);
+                    window.scrollTo(0, 0);
+                  }}
                   className="block py-4 pt-[2rem] text-foreground font-medium hover:text-primary transition-colors"
                 >
                   Home
@@ -166,7 +170,10 @@ export default function Navbar() {
                                 <Link
                                   key={subService.slug}
                                   to={`/services/${category.slug}/${subService.slug}`}
-                                  onClick={() => setMobileOpen(false)}
+                                  onClick={() => {
+                                    setMobileOpen(false);
+                                    window.scrollTo(0, 0);
+                                  }}
                                   className="block px-6 py-2.5 text-xs text-yellow-700 hover:text-yellow-600 transition-colors font-medium"
                                 >
                                   {subService.name}
@@ -183,7 +190,10 @@ export default function Navbar() {
                 {/* About */}
                 <Link 
                   to="/about" 
-                  onClick={() => setMobileOpen(false)}
+                  onClick={() => {
+                    setMobileOpen(false);
+                    window.scrollTo(0, 0);
+                  }}
                   className="block py-4 text-foreground font-medium hover:text-primary transition-colors"
                 >
                   About
@@ -192,7 +202,10 @@ export default function Navbar() {
                 {/* Contact */}
                 <Link 
                   to="/contact" 
-                  onClick={() => setMobileOpen(false)}
+                  onClick={() => {
+                    setMobileOpen(false);
+                    window.scrollTo(0, 0);
+                  }}
                   className="block py-4 text-foreground font-medium hover:text-primary transition-colors"
                 >
                   Contact

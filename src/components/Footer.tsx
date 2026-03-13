@@ -60,6 +60,7 @@ export default function Footer() {
                   <li key={sub.slug}>
                     <Link
                       to={`/services/${cat.slug}/${sub.slug}`}
+                      onClick={() => window.scrollTo(0, 0)}
                       className="text-secondary-foreground/60 hover:text-primary text-sm transition-colors"
                     >
                       {sub.name}
@@ -82,6 +83,7 @@ export default function Footer() {
                     <li key={sub.slug}>
                       <Link
                         to={`/services/${cat.slug}/${sub.slug}`}
+                        onClick={() => window.scrollTo(0, 0)}
                         className="text-secondary-foreground/60 hover:text-primary text-sm transition-colors"
                       >
                         {sub.name}
@@ -94,18 +96,21 @@ export default function Footer() {
             <div className="mt-4">
               <Link
                 to="/about"
+                onClick={() => window.scrollTo(0, 0)}
                 className="text-secondary-foreground/60 hover:text-primary text-sm transition-colors block mb-2"
               >
                 About Us
               </Link>
               <Link
                 to="/contact"
+                onClick={() => window.scrollTo(0, 0)}
                 className="text-secondary-foreground/60 hover:text-primary text-sm transition-colors block mb-2"
               >
                 Contact Us
               </Link>
               <Link
                 to="/privacy-policy"
+                onClick={() => window.scrollTo(0, 0)}
                 className="text-secondary-foreground/60 hover:text-primary text-sm transition-colors block"
               >
                 Privacy Policy

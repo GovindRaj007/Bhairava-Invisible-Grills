@@ -41,7 +41,10 @@ export default function ServiceAreaChennai() {
           </div>
           <div className="flex flex-col justify-center">
             <div className="bg-surface-darker rounded-lg p-6 mb-6">
-              <h3 className="font-heading font-bold text-secondary-foreground text-lg mb-4">{BUSINESS.name}</h3>
+              <h3 className="font-heading font-bold text-lg mb-4">
+                <span className="text-secondary-foreground">Mor</span>
+                <span className="text-primary">Safe</span>
+              </h3>
               <div className="space-y-3 text-secondary-foreground/70 text-sm">
                 <p className="flex items-center gap-2"><MapPin className="w-4 h-4 text-primary" /> {BUSINESS.address}</p>
                 <p className="flex items-center gap-2"><Phone className="w-4 h-4 text-primary" /> <a href={`tel:${BUSINESS.phone}`} className="hover:text-primary">{BUSINESS.phone}</a></p>

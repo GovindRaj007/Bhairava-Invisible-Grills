@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from 'react';
+import { useRef } from 'react';
 import { Star } from 'lucide-react';
 
 const testimonials = [
@@ -12,32 +12,30 @@ const testimonials = [
 
 export default function Testimonials() {
   const scrollRef = useRef<HTMLDivElement>(null);
-  const [touchState, setTouchState] = useState({ start: 0, isScrolling: false });
+  const touchRef = useRef({ startX: 0, startTime: 0 });
 
   const handleTouchStart = (e: React.TouchEvent) => {
-    setTouchState({ start: e.touches[0].clientX, isScrolling: false });
-  };
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    const diff = Math.abs(e.touches[0].clientX - touchState.start);
-    if (diff > 5) {
-      setTouchState((prev) => ({ ...prev, isScrolling: true }));
-    }
+    touchRef.current.startX = e.touches[0].clientX;
+    touchRef.current.startTime = Date.now();
   };
 
   const handleTouchEnd = (e: React.TouchEvent) => {
-    if (!scrollRef.current || !touchState.isScrolling) return;
-    
-    const diff = touchState.start - e.changedTouches[0].clientX;
-    const scrollAmount = diff > 0 ? 340 : -340; // Card width + gap
-    
-    // Use requestAnimationFrame for smooth native scrolling
-    requestAnimationFrame(() => {
-      scrollRef.current?.scrollBy({ 
-        left: scrollAmount, 
-        behavior: 'smooth' 
+    if (!scrollRef.current) return;
+
+    const endX = e.changedTouches[0].clientX;
+    const endTime = Date.now();
+    const distance = touchRef.current.startX - endX;
+    const duration = endTime - touchRef.current.startTime;
+
+    // Minimum swipe distance (40px) and not a long drag (< 800ms)
+    if (Math.abs(distance) > 40 && duration < 800) {
+      const scrollAmount = distance > 0 ? 340 : -340; // Card width + gap
+
+      scrollRef.current.scrollBy({
+        left: scrollAmount,
+        behavior: 'smooth',
       });
-    });
+    }
   };
 
   return (
@@ -52,14 +50,13 @@ export default function Testimonials() {
         <div
           ref={scrollRef}
           onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
-          className="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory no-scrollbar scroll-smooth"
+          className="flex gap-6 overflow-x-auto scroll-smooth pb-4 snap-x snap-mandatory scrollbar-hide [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
         >
           {testimonials.map((t, i) => (
             <div
               key={i}
-              className="bg-card rounded-lg p-6 shadow-sm border-t-2 border-primary flex-shrink-0 w-[300px] sm:w-[340px] snap-start"
+              className="bg-card rounded-lg p-6 shadow-sm border-t-2 border-primary flex-shrink-0 w-[300px] sm:w-[340px] snap-start transition-shadow hover:shadow-md"
             >
               <div className="flex gap-1 mb-3">
                 {[...Array(5)].map((_, j) => (

@@ -1,36 +1,84 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
+
+// Global map to store scroll positions for each route
+const scrollPositions = new Map<string, number>();
+
+// Global navigation state - single source of truth
+const navigationState = {
+  isBackOrForward: false,
+};
+
+// Export function to access navigation state
+export function getNavigationState() {
+  return navigationState;
+}
+
+// Export function to reset navigation flag
+export function resetNavigationFlag() {
+  navigationState.isBackOrForward = false;
+}
 
 /**
  * Hook to save and restore scroll position when navigating
- * Saves scroll position when leaving a page
- * Restores scroll position when returning via browser back button
+ * - Saves scroll position continuously while on a page
+ * - Restores scroll position when using browser back button
+ * - Scrolls to top when clicking links (forward navigation)
  */
 export function useScrollRestoration() {
   const location = useLocation();
+  const prevPathname = useRef<string>(location.pathname);
 
+  // Disable browser's native scroll restoration for manual control
   useEffect(() => {
-    // Restore scroll position when returning to the page
-    const restoreScroll = () => {
-      const savedScroll = sessionStorage.getItem(`scroll-${location.pathname}`);
-      if (savedScroll) {
-        const scrollPos = JSON.parse(savedScroll);
-        window.scrollTo(0, scrollPos);
-      }
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+  }, []);
+
+  // Detect back/forward navigation via popstate event
+  useEffect(() => {
+    const handlePopState = () => {
+      navigationState.isBackOrForward = true;
     };
 
-    // Delay restoration to allow page to render
-    const timer = setTimeout(restoreScroll, 0);
-    return () => clearTimeout(timer);
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
+  // Save scroll position on every scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      scrollPositions.set(location.pathname, window.scrollY);
+    };
+
+    // Use passive listener for better performance
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
   }, [location.pathname]);
 
-  // Save scroll position before leaving
+  // Handle scroll restoration on pathname change
   useEffect(() => {
-    const handleBeforeUnload = () => {
-      sessionStorage.setItem(`scroll-${location.pathname}`, JSON.stringify(window.scrollY));
-    };
+    // Only execute on route change
+    if (location.pathname === prevPathname.current) {
+      return;
+    }
 
-    window.addEventListener('beforeunload', handleBeforeUnload);
-    return () => window.removeEventListener('beforeunload', handleBeforeUnload);
+    prevPathname.current = location.pathname;
+
+    // Only restore scroll position if this is a back/forward navigation
+    if (navigationState.isBackOrForward) {
+      // Use requestAnimationFrame to ensure DOM is updated before scrolling
+      const frameId = requestAnimationFrame(() => {
+        const savedPos = scrollPositions.get(location.pathname) ?? 0;
+        window.scrollTo(0, savedPos);
+        
+        // Reset flag AFTER restoration is complete
+        navigationState.isBackOrForward = false;
+      });
+      
+      return () => cancelAnimationFrame(frameId);
+    }
+    // For forward navigation (link clicks), ScrollToTop component handles scrolling to 0
   }, [location.pathname]);
 }

@@ -213,7 +213,7 @@ export default function ServicePage() {
       </section>
 
       <FAQAccordion faqs={service.faqs} />
-      <CTASection />
+      <CTASection categorySlug={categorySlug} />
     </>
   );
 }
