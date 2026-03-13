@@ -20,7 +20,6 @@ export default function Contact() {
     phone: "",
     email: "",
     service: "",
-    location: "",
     message: "",
   });
   
@@ -59,8 +58,7 @@ export default function Contact() {
     isNameValid(formData.name) && 
     isPhoneValid(formData.phone) && 
     isEmailValid(formData.email) &&
-    formData.service !== "" && 
-    formData.location !== "";
+    formData.service !== "";
 
   // Form handlers
   const handleNameChange = (value: string) => {
@@ -156,7 +154,6 @@ export default function Contact() {
         phone: formData.phone,
         email: formData.email.trim() || "no-email@provided.com",
         service: formData.service,
-        location: formData.location,
         message: formData.message.trim() || "",
       };
 
@@ -180,7 +177,6 @@ export default function Contact() {
         phone: "",
         email: "",
         service: "",
-        location: "",
         message: "",
       });
       setErrors({ name: "", phone: "", email: "" });
@@ -314,47 +310,23 @@ export default function Contact() {
                   )}
                 </div>
 
-                <div className="grid gap-4 md:grid-cols-2">
-                  <div className="space-y-2">
-                    <Label htmlFor="service" className="text-white/90">Service Required *</Label>
-                    <Select 
-                      value={formData.service} 
-                      onValueChange={(value) => setFormData({...formData, service: value})}
-                      required
-                    >
-                      <SelectTrigger className="bg-white/10 border-white/20 text-white">
-                        <SelectValue placeholder="Select service" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {serviceCategories.map((cat) => (
-                          <SelectItem key={cat.slug} value={cat.name}>{cat.name}</SelectItem>
-                        ))}
-                        <SelectItem value="other">Other</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="location" className="text-white/90">Your Location *</Label>
-                    <Select 
-                      value={formData.location} 
-                      onValueChange={(value) => setFormData({...formData, location: value})}
-                      required
-                    >
-                      <SelectTrigger className="bg-white/10 border-white/20 text-white">
-                        <SelectValue placeholder="Select city" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="chennai">Chennai</SelectItem>
-                        <SelectItem value="bangalore">Bangalore</SelectItem>
-                        <SelectItem value="hyderabad">Hyderabad</SelectItem>
-                        <SelectItem value="mumbai">Mumbai</SelectItem>
-                        <SelectItem value="delhi">Delhi</SelectItem>
-                        <SelectItem value="pune">Pune</SelectItem>
-                        <SelectItem value="kolkata">Kolkata</SelectItem>
-                        <SelectItem value="other">Other</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
+                <div className="space-y-2">
+                  <Label htmlFor="service" className="text-white/90">Service Required *</Label>
+                  <Select 
+                    value={formData.service} 
+                    onValueChange={(value) => setFormData({...formData, service: value})}
+                    required
+                  >
+                    <SelectTrigger className="bg-white/10 border-white/20 text-white">
+                      <SelectValue placeholder="Select service" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {serviceCategories.map((cat) => (
+                        <SelectItem key={cat.slug} value={cat.name}>{cat.name}</SelectItem>
+                      ))}
+                      <SelectItem value="other">Other</SelectItem>
+                    </SelectContent>
+                  </Select>
                 </div>
 
                 <div className="space-y-2">
