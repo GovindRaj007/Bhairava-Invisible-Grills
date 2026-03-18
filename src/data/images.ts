@@ -1,6 +1,8 @@
 import serviceInvisibleGrills2 from '@/assets/service-invisible-grills-2.jpg';
 import serviceInvisibleGrills3 from '@/assets/service-invisible-grills-3.jpg';
 import serviceInvisibleGrills4 from '@/assets/service-invisible-grills-4.jpg';
+import serviceInvisibleGrills5 from '@/assets/service-invisible-grills-5.jpg';
+import serviceInvisibleGrills6 from '@/assets/service-invisible-grills-6.jpg';
 import heroInvisibleGrills from '@/assets/hero-invisible-grills.jpg';
 import serviceWindowGrills from '@/assets/service-window-grills.jpg';
 import serviceWindowGrills2 from '@/assets/service-window-grills-2.jpg';
@@ -28,15 +30,15 @@ import serviceTerraceCricket3 from '@/assets/service-terrace-cricket-3.jpg';
 
 
 export const heroImages: Record<string, string> = {
-  'invisible-grills': heroInvisibleGrills,
+  'invisible-grills': serviceInvisibleGrills4,
   'safety-nets': heroSafetyNets,
   'ceiling-hangers': heroCeilingHangers,
   'sports-nets': heroSportsNets,
 };
 
 export const serviceImages: Record<string, string[]> = {
-  'invisible-grills/installation': [heroInvisibleGrills,serviceInvisibleGrills2, serviceInvisibleGrills3],
-  'invisible-grills/balconies': [heroInvisibleGrills, serviceInvisibleGrills3, serviceInvisibleGrills4],
+  'invisible-grills/installation': [heroInvisibleGrills,serviceInvisibleGrills5, serviceInvisibleGrills3],
+  'invisible-grills/balconies': [serviceInvisibleGrills4, serviceInvisibleGrills3,serviceInvisibleGrills6],
   'invisible-grills/windows': [serviceWindowGrills,serviceWindowGrills2 , serviceWindowGrills3],
   'safety-nets/child-safe-balcony': [serviceBalconyNets3,heroSafetyNets, serviceBalconyNets2],
   'safety-nets/pigeon-nets': [servicePigeonNets, servicePigeonNets3, servicePigeonNets2],
@@ -56,11 +58,11 @@ export const categoryCardImages: Record<string, string> = {
 
 export const serviceCardImages: Record<string, string> = {
   'invisible-grills/installation': serviceInvisibleGrills2,
-  'invisible-grills/balconies': heroInvisibleGrills,
+  'invisible-grills/balconies': serviceInvisibleGrills5,
   'invisible-grills/windows': serviceWindowGrills2,
   'safety-nets/child-safe-balcony': heroSafetyNets,
   'safety-nets/pigeon-nets': servicePigeonNets,
-  'safety-nets/monkey-nets': serviceMonkeyNets,
+  'safety-nets/monkey-nets': serviceMonkeyNets2,
   'safety-nets/duct-area': serviceDuctNets,
   'ceiling-hangers/installation': heroCeilingHangers,
   'sports-nets/practice-nets': heroSportsNets,

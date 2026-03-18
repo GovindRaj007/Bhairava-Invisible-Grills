@@ -5,6 +5,13 @@ import { heroImages } from '@/data/images';
 import { Phone } from 'lucide-react';
 import { BUSINESS } from '@/data/services';
 
+const badgeTexts: Record<string, string> = {
+  'invisible-grills': 'Trusted Home Safety Experts',
+  'safety-nets': 'Certified Protection for Your Family',
+  'ceiling-hangers': 'Professional Hanging Solutions',
+  'sports-nets': 'Professional Sports Facilities',
+};
+
 const slides = serviceCategories.map((cat) => ({
   label: cat.label,
   headline: cat.headline,
@@ -12,6 +19,8 @@ const slides = serviceCategories.map((cat) => ({
   pills: cat.pills,
   image: heroImages[cat.slug],
   link: `/services/${cat.slug}/${cat.subServices[0].slug}`,
+  slug: cat.slug,
+  badgeText: badgeTexts[cat.slug] || 'Trusted Home Safety Experts',
 }));
 
 export default function HeroSlider() {
@@ -74,6 +83,12 @@ export default function HeroSlider() {
           />
           <div className="relative z-10 flex flex-col justify-center h-full container mx-auto px-4 md:px-8 mt-[-2rem]">
             <div className="max-w-2xl">
+              <div
+                key={`badge-${current}`}
+                className="hero-content-animate mb-4 md:mb-6 inline-block rounded-full bg-white/10 px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm font-medium text-white backdrop-blur-sm"
+              >
+                {slide.badgeText}
+              </div>
               <span className="golden-label mb-4 block">{slide.label}</span>
               <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-secondary-foreground mb-4 leading-tight">
                 {slide.headline}

@@ -50,7 +50,7 @@ export default function Navbar() {
 
           {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center gap-8">
-            <Link to="/" onClick={() => window.scrollTo(0, 0)} className="text-foreground hover:text-primary text-sm font-medium transition-colors">
+            <Link to="/" onClick={() => window.scrollTo(0, 0)} className="text-foreground hover:text-primary text-sm lg:text-base font-medium transition-colors">
               Home
             </Link>
             <div
@@ -59,7 +59,7 @@ export default function Navbar() {
               onMouseLeave={() => setMegaOpen(false)}
               ref={megaRef}
             >
-              <button className="flex items-center gap-1 text-foreground hover:text-primary text-sm font-medium transition-colors">
+              <button className="flex items-center gap-1 text-foreground hover:text-primary text-sm lg:text-base font-medium transition-colors">
                 Services <ChevronDown className="w-3 h-3" />
               </button>
               {megaOpen && (
@@ -87,10 +87,10 @@ export default function Navbar() {
                 </div>
               )}
             </div>
-            <Link to="/about" onClick={() => window.scrollTo(0, 0)} className="text-foreground hover:text-primary text-sm font-medium transition-colors">
+            <Link to="/about" onClick={() => window.scrollTo(0, 0)} className="text-foreground hover:text-primary text-sm lg:text-base font-medium transition-colors">
               About
             </Link>
-            <Link to="/contact" onClick={() => window.scrollTo(0, 0)} className="text-foreground hover:text-primary text-sm font-medium transition-colors">
+            <Link to="/contact" onClick={() => window.scrollTo(0, 0)} className="text-foreground hover:text-primary text-sm lg:text-base font-medium transition-colors">
               Contact
             </Link>
           </nav>

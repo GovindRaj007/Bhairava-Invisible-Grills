@@ -1,9 +1,14 @@
+import favicon from '@/assets/Morsafe-logo.jpg';
+
 export default function LoadingPages() {
   return (
     <div className="flex items-center justify-center min-h-screen">
       <div className="flex flex-col items-center gap-4">
-        <div className="w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin" />
-        <p className="text-muted-foreground">Loading...</p>
+        <img 
+          src={favicon} 
+          alt="Loading" 
+          className="w-16 h-16 animate-spin rounded-full"
+        />
       </div>
     </div>
   );

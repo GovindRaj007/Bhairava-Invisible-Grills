@@ -44,13 +44,13 @@ export default function Breadcrumb({ items }: BreadcrumbProps) {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <nav className="flex items-center gap-1.5 text-xs" aria-label="Breadcrumb">
+      <nav className="flex items-center gap-1.5 text-xs lg:text-sm" aria-label="Breadcrumb">
         <Link to="/" className="text-primary hover:underline flex items-center gap-1">
-          <Home className="w-3 h-3" /> Home
+          <Home className="w-3 h-3 lg:w-4 lg:h-4" /> Home
         </Link>
         {items.map((item, i) => (
           <span key={i} className="flex items-center gap-1.5">
-            <ChevronRight className="w-3 h-3 text-primary/50" />
+            <ChevronRight className="w-3 h-3 lg:w-4 lg:h-4 text-primary/50" />
             {item.href ? (
               <Link
                 to={item.href}

@@ -1,13 +1,17 @@
+import { lazy, Suspense } from 'react';
 import { Helmet } from 'react-helmet-async';
 import HeroSlider from '@/components/HeroSlider';
+import { ImageShowcase } from '@/components/ImageShowcase';
 import ServiceCategories from '@/components/ServiceCategories';
-import MorSafeStandard from '@/components/MorSafeStandard';
-import HowItWorks from '@/components/HowItWorks';
-import Testimonials from '@/components/Testimonials';
-import ServiceAreaChennai from '@/components/ServiceAreaChennai';
-import CTASection from '@/components/CTASection';
 import { BUSINESS } from '@/data/services';
 import { useScrollRestoration } from '@/hooks/useScrollRestoration';
+
+// Lazy load below-the-fold components
+const MorSafeStandard = lazy(() => import('@/components/MorSafeStandard'));
+const HowItWorks = lazy(() => import('@/components/HowItWorks'));
+const Testimonials = lazy(() => import('@/components/Testimonials'));
+const ServiceAreaChennai = lazy(() => import('@/components/ServiceAreaChennai'));
+const CTASection = lazy(() => import('@/components/CTASection'));
 
 const localBusinessJsonLd = {
   '@context': 'https://schema.org',
@@ -42,12 +46,23 @@ export default function Index() {
         <script type="application/ld+json">{JSON.stringify(localBusinessJsonLd)}</script>
       </Helmet>
       <HeroSlider />
+      <ImageShowcase />
       <ServiceCategories />
-      <MorSafeStandard />
-      <HowItWorks />
-      <Testimonials />
-      <ServiceAreaChennai />
-      <CTASection />
+      <Suspense fallback={<div className="h-96" />}>
+        <MorSafeStandard />
+      </Suspense>
+      <Suspense fallback={<div className="h-96" />}>
+        <HowItWorks />
+      </Suspense>
+      <Suspense fallback={<div className="h-96" />}>
+        <Testimonials />
+      </Suspense>
+      <Suspense fallback={<div className="h-96" />}>
+        <ServiceAreaChennai />
+      </Suspense>
+      <Suspense fallback={<div className="h-96" />}>
+        <CTASection />
+      </Suspense>
     </>
   );
 }

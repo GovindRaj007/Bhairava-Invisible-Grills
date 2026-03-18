@@ -32,7 +32,7 @@ export default function ServicePageSlider({ images, alt }: ServicePageSliderProp
 
   return (
     <div
-      className="relative h-64 md:h-80 w-full overflow-hidden rounded-lg"
+      className="relative h-[20rem] md:h-[25rem] w-full overflow-hidden rounded-lg"
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
