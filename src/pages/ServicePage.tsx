@@ -1,8 +1,8 @@
 import { useParams } from 'react-router-dom';
 import { useScrollRestoration } from '@/hooks/useScrollRestoration';
 import { Helmet } from 'react-helmet-async';
-import { getServiceBySlug } from '@/data/services';
-import { serviceImages, serviceCardImages } from '@/data/images';
+import { getServiceByServiceSlug } from '@/data/services';
+import { serviceImagesBySlug, serviceCardImagesBySlug } from '@/data/images';
 import Breadcrumb from '@/components/Breadcrumb';
 import FAQAccordion from '@/components/FAQAccordion';
 import CTASection from '@/components/CTASection';
@@ -13,14 +13,16 @@ import NotFound from './NotFound';
 
 export default function ServicePage() {
   useScrollRestoration();
-  const { categorySlug, serviceSlug } = useParams<{ categorySlug: string; serviceSlug: string }>();
-  const result = categorySlug && serviceSlug ? getServiceBySlug(categorySlug, serviceSlug) : null;
+  const { serviceSlug } = useParams<{ serviceSlug: string }>();
+  const result = serviceSlug ? getServiceByServiceSlug(serviceSlug) : null;
 
   if (!result) return <NotFound />;
 
   const { category, service } = result;
-  const images = serviceImages[`${categorySlug}/${serviceSlug}`] || [];
-  const overviewImage = serviceCardImages[`${categorySlug}/${serviceSlug}`];
+  
+  // Get images by service slug
+  let images = serviceImagesBySlug[serviceSlug] || [];
+  let overviewImage = serviceCardImagesBySlug[serviceSlug];
 
   const getIcon = (name: string) => {
     const Icon = (LucideIcons as any)[name];
@@ -32,8 +34,8 @@ export default function ServicePage() {
     '@type': 'Service',
     name: service.name,
     description: service.overview,
-    provider: { '@type': 'LocalBusiness', name: 'MorSafe' },
-    areaServed: { '@type': 'City', name: 'Chennai' },
+    provider: { '@type': 'LocalBusiness', name: 'Bhairava Invisible Grills' },
+    areaServed: { '@type': 'City', name: 'Visakhapatnam' },
   };
 
   return (
@@ -41,10 +43,10 @@ export default function ServicePage() {
       <Helmet>
         <title>{service.metaTitle}</title>
         <meta name="description" content={service.metaDescription} />
-        <link rel="canonical" href={`https://morsafe.in/services/${categorySlug}/${serviceSlug}`} />
+        <link rel="canonical" href={`https://bhairavainvisiblegrills.in/services/${serviceSlug}`} />
         <meta property="og:title" content={service.metaTitle} />
         <meta property="og:description" content={service.metaDescription} />
-        <meta property="og:url" content={`https://morsafe.in/services/${categorySlug}/${serviceSlug}`} />
+        <meta property="og:url" content={`https://bhairavainvisiblegrills.in/services/${serviceSlug}`} />
         <script type="application/ld+json">{JSON.stringify(serviceJsonLd)}</script>
       </Helmet>
 
@@ -67,8 +69,7 @@ export default function ServicePage() {
             {service.heroTitle}
           </h1>
           <Breadcrumb items={[
-            { label: 'Services', href: '/#services', serviceCategorySlug: categorySlug },
-            { label: category.name, href: '/#services', serviceCategorySlug: categorySlug },
+            { label: 'Services', href: '/#services' },
             { label: service.name },
           ]} />
         </div>
@@ -213,7 +214,7 @@ export default function ServicePage() {
       </section>
 
       <FAQAccordion faqs={service.faqs} />
-      <CTASection categorySlug={categorySlug} />
+      <CTASection serviceSlug={serviceSlug} />
     </>
   );
 }

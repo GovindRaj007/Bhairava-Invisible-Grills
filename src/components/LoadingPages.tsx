@@ -1,4 +1,4 @@
-import favicon from '@/assets/Morsafe-logo.jpg';
+import favicon from '@/assets/Bhairava-logo.jpg';
 
 export default function LoadingPages() {
   return (

@@ -1,34 +1,13 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { serviceCategories } from '@/data/services';
-import { serviceCardImages } from '@/data/images';
+import { getAllFlatServices } from '@/data/services';
+import { serviceCardImagesBySlug } from '@/data/images';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Shield, ShieldCheck, Shirt, Trophy } from 'lucide-react';
-
-const iconMap: Record<string, React.ElementType> = { Shield, ShieldCheck, Shirt, Trophy };
 
 export default function ServiceCategories() {
   const location = useLocation();
-  const [active, setActive] = useState<string>(() => {
-    const stored = sessionStorage.getItem('activeServiceCategory');
-    if (stored) {
-      sessionStorage.removeItem('activeServiceCategory');
-      return stored;
-    }
-    return serviceCategories[0].slug;
-  });
-
-  // Check for category change via navigation
-  useEffect(() => {
-    const stored = sessionStorage.getItem('activeServiceCategory');
-    if (stored) {
-      setActive(stored);
-      sessionStorage.removeItem('activeServiceCategory');
-    }
-  }, [location]);
-
-  const activeCat = serviceCategories.find((c) => c.slug === active)!;
+  const allServices = getAllFlatServices();
 
   return (
     <section id="services" className="py-8 md:py-12">
@@ -48,92 +27,68 @@ export default function ServiceCategories() {
           </p>
         </div>
 
-        {/* Category tabs - equal size cards */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-          {serviceCategories.map((cat) => {
-            const Icon = iconMap[cat.icon] || Shield;
-            const isActive = active === cat.slug;
+        {/* All Services - New card design */}
+        <div className="flex flex-wrap gap-6 justify-center sm:justify-center md:justify-start lg:justify-start animate-fade-in">
+          {allServices.map((serviceItem) => {
+            const { category, service } = serviceItem;
+            // Get image by service slug
+            const cardImage = serviceCardImagesBySlug[service.slug];
+            
             return (
-              <button
-                key={cat.slug}
-                onClick={() => setActive(cat.slug)}
-                className={`rounded-lg p-5 text-center transition-all duration-300 border-t-4 ${
-                  isActive
-                    ? 'bg-secondary border-primary shadow-lg scale-[1.02]'
-                    : 'bg-secondary/60 border-transparent hover:border-primary/50'
-                }`}
-              >
-                <div className={`w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3 ${
-                  isActive ? 'bg-primary/20' : 'bg-primary/10'
-                }`}>
-                  <Icon className={`w-6 h-6 ${isActive ? 'text-primary' : 'text-primary/70'}`} />
-                </div>
-                <h3 className={`font-heading text-sm font-bold ${
-                  isActive ? 'text-secondary-foreground' : 'text-secondary-foreground/70'
-                }`}>
-                  {cat.name}
-                </h3>
-              </button>
+              <div key={`${category.slug}-${service.slug}`} className="w-full sm:w-[18rem] md:w-76 lg:w-80 min-w-[18rem] max-w-[470px]">
+                <Link
+                  to={`/services/${service.slug}`}
+                  onClick={() => window.scrollTo(0, 0)}
+                  className="group relative overflow-hidden rounded-2xl transition-all hover:-translate-y-1 hover:shadow-xl flex flex-col h-full"
+                >
+                  {/* Service Image */}
+                  <div className="relative h-40 overflow-hidden">
+                    <img
+                      src={cardImage}
+                      alt={service.name}
+                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      loading="lazy"
+                      width={400}
+                      height={160}
+                    />
+                    {/* Gradient overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[hsl(222,47%,11%,0.7)]" />
+                    {/* Badge */}
+                    <span className="absolute right-3 top-3 rounded-full bg-primary px-3 py-1 text-xs font-medium text-white">
+                      Popular
+                    </span>
+                  </div>
+
+                  {/* Content with gradient background */}
+                  <div className="bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 p-5 flex flex-col flex-1">
+                    {/* Title */}
+                    <h3 className="mb-2 font-heading text-lg font-semibold text-white">
+                      {service.name}
+                    </h3>
+                    
+                    {/* Description */}
+                    <p className="mb-4 text-sm text-white/70 line-clamp-3">{service.description}</p>
+
+                    {/* Features */}
+                    <ul className="mb-4 space-y-1">
+                      {service.benefits.slice(0, 3).map((feature, idx) => (
+                        <li key={idx} className="flex items-center gap-2 text-xs text-white/60">
+                          <div className="h-1.5 w-1.5 rounded-full bg-primary" />
+                          {feature.title}
+                        </li>
+                      ))}
+                    </ul>
+
+                    {/* Link */}
+                    <span className="inline-flex items-center gap-1 text-sm font-medium text-primary transition-colors group-hover:text-primary mt-auto">
+                      Learn More
+                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </span>
+                  </div>
+                </Link>
+              </div>
             );
           })}
-        </div>
-
-        {/* Active category services - New card design */}
-        <div className="flex flex-wrap gap-6 justify-center sm:justify-center md:justify-start lg:justify-start animate-fade-in" key={active}>
-          {activeCat.subServices.map((service) => (
-            <div key={service.slug} className="w-full sm:w-[18rem] md:w-76 lg:w-80 min-w-[18rem] max-w-[470px]">
-              <Link
-                to={`/services/${activeCat.slug}/${service.slug}`}
-                onClick={() => window.scrollTo(0, 0)}
-                className="group relative overflow-hidden rounded-2xl transition-all hover:-translate-y-1 hover:shadow-xl flex flex-col h-full"
-              >
-                {/* Service Image */}
-                <div className="relative h-40 overflow-hidden">
-                  <img
-                    src={serviceCardImages[`${activeCat.slug}/${service.slug}`]}
-                    alt={service.name}
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    loading="lazy"
-                    width={400}
-                    height={160}
-                  />
-                  {/* Gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[hsl(222,47%,11%,0.7)]" />
-                  {/* Badge */}
-                  <span className="absolute right-3 top-3 rounded-full bg-primary px-3 py-1 text-xs font-medium text-white">
-                    Popular
-                  </span>
-                </div>
-
-                {/* Content with gradient background */}
-                <div className="bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 p-5 flex flex-col flex-1">
-                  {/* Title */}
-                  <h3 className="mb-2 font-heading text-lg font-semibold text-white">
-                    {service.name}
-                  </h3>
-                  
-                  {/* Description */}
-                  <p className="mb-4 text-sm text-white/70 line-clamp-3">{service.description}</p>
-
-                  {/* Features */}
-                  <ul className="mb-4 space-y-1">
-                    {service.benefits.slice(0, 3).map((feature, idx) => (
-                      <li key={idx} className="flex items-center gap-2 text-xs text-white/60">
-                        <div className="h-1.5 w-1.5 rounded-full bg-primary" />
-                        {feature.title}
-                      </li>
-                    ))}
-                  </ul>
-
-                  {/* Link */}
-                  <span className="inline-flex items-center gap-1 text-sm font-medium text-primary transition-colors group-hover:text-primary mt-auto">
-                    Learn More
-                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </span>
-                </div>
-              </Link>
-            </div>
-          ))}
         </div>
 
         {/* CTA */}

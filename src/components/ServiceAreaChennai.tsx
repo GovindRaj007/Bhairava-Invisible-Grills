@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { BUSINESS } from '@/data/services';
 import { Phone, Mail, MapPin, Clock, Map } from 'lucide-react';
 
-export default function ServiceAreaChennai() {
+export default function ServiceAreaVisakhapatnam() {
   const [mapLoaded, setMapLoaded] = useState(false);
 
   return (
@@ -10,7 +10,7 @@ export default function ServiceAreaChennai() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-10">
           <h2 className="font-heading text-3xl md:text-4xl font-extrabold text-secondary-foreground">
-            Serving All of <span className="text-primary">Chennai</span>
+            Serving All of <span className="text-primary">Visakhapatnam</span>
           </h2>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -28,22 +28,22 @@ export default function ServiceAreaChennai() {
               </div>
             )}
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d497511.55843576!2d79.87893!3d13.04996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5265ea4f7d3361%3A0x6e61a70b6863d433!2sChennai%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d378882.14436215!2d82.20!3d17.69!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a3d00a7f5f5f5f5%3A0x1234567890ab!2sVisakhapatnam%2C%20Andhra%20Pradesh!5e0!3m2!1sen!2sin!4v1"
               width="100%"
               height="400"
               style={{ border: 0 }}
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="MorSafe Chennai Service Area"
+              title="Bhairava Invisible Grills Visakhapatnam Service Area"
               onLoad={() => setMapLoaded(true)}
             />
           </div>
           <div className="flex flex-col justify-center">
             <div className="bg-surface-darker rounded-lg p-6 mb-6">
               <h3 className="font-heading font-bold text-lg mb-4">
-                <span className="text-secondary-foreground">Mor</span>
-                <span className="text-primary">Safe</span>
+                <span className="text-secondary-foreground">Bhairava</span>
+                <span className="text-primary"> Invisible Grills</span>
               </h3>
               <div className="space-y-3 text-secondary-foreground/70 text-sm">
                 <p className="flex items-center gap-2"><MapPin className="w-4 h-4 text-primary" /> {BUSINESS.address}</p>

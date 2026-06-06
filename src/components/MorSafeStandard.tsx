@@ -9,13 +9,13 @@ const standards = [
   { icon: IndianRupee, title: 'Transparent Pricing', description: 'No hidden charges — detailed quotes before we start.' },
 ];
 
-export default function MorSafeStandard() {
+export default function BhairavaStandard() {
   return (
     <section className="section-light py-16 md:py-24">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="font-heading text-3xl md:text-4xl font-extrabold text-foreground mb-2">
-            The <span className="golden-underline">MorSafe</span> Standard
+            The <span className="golden-underline">Bhairava</span> Standard
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto">
             Every installation carries our promise of precision, safety, and lasting quality.

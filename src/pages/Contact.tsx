@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import { BUSINESS, serviceCategories } from '@/data/services';
-import { Phone, Mail, Clock, CheckCircle } from 'lucide-react';
+import { Phone, Mail, Clock, CheckCircle, MapPin } from 'lucide-react';
 import Breadcrumb from '@/components/Breadcrumb';
 import { useState } from 'react';
 import { useScrollRestoration } from '@/hooks/useScrollRestoration';
@@ -200,9 +200,13 @@ export default function Contact() {
   return (
     <>
       <Helmet>
-        <title>Contact MorSafe — Get a Free Quote in Chennai</title>
-        <meta name="description" content="Contact MorSafe for a free quote on invisible grills, safety nets, sports nets, and ceiling hangers in Chennai. Call or WhatsApp us today." />
-        <link rel="canonical" href="https://morsafe.in/contact" />
+        <title>Contact Bhairava - Best Invisible Grills Quote in Vizag</title>
+        <meta name="description" content="Contact Bhairava Invisible Grills for a free quote on invisible grills and ceiling hangers in Visakhapatnam. Call or WhatsApp us near you today." />
+        <link rel="canonical" href="https://bhairavainvisiblegrills.in/contact" />
+        <meta property="og:title" content="Contact Bhairava Invisible Grills - Free Quote in Vizag" />
+        <meta property="og:description" content="Get a free quote on invisible grills and ceiling hangers in Visakhapatnam. Contact Bhairava Invisible Grills now." />
+        <meta property="og:url" content="https://bhairavainvisiblegrills.in/contact" />
+        <meta property="og:type" content="website" />
       </Helmet>
 
       {/* Hero Section */}
@@ -372,8 +376,19 @@ export default function Contact() {
                     <Phone className="h-6 w-6 text-primary" />
                   </div>
                   <div className="flex-1">
-                    <p className="font-semibold text-white">Call Us</p>
+                    <p className="font-semibold text-white">Call Us (Primary)</p>
                     <p className="text-white/70">{BUSINESS.phone}</p>
+                  </div>
+                </a>
+
+                {/* Call Secondary */}
+                <a href={`tel:${BUSINESS.phone2}`} data-track="call-secondary" className="flex items-center gap-4 rounded-xl bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-4 transition-all hover:shadow-lg hover:-translate-y-1">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/20">
+                    <Phone className="h-6 w-6 text-primary" />
+                  </div>
+                  <div className="flex-1">
+                    <p className="font-semibold text-white">Call Us (Secondary)</p>
+                    <p className="text-white/70">{BUSINESS.phone2}</p>
                   </div>
                 </a>
 
@@ -398,6 +413,17 @@ export default function Contact() {
                     <p className="text-white/70">{BUSINESS.email}</p>
                   </div>
                 </a>
+
+                {/* Address */}
+                <div className="flex items-start gap-4 rounded-xl bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-4">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/20 flex-shrink-0">
+                    <MapPin className="h-6 w-6 text-primary" />
+                  </div>
+                  <div>
+                    <p className="font-semibold text-white">Address</p>
+                    <p className="text-white/70 text-sm">{BUSINESS.address}</p>
+                  </div>
+                </div>
               </div>
 
               {/* Business Hours */}
@@ -412,6 +438,78 @@ export default function Contact() {
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Service Area Map */}
+      <section className="section-surface py-16 md:py-24">
+        <div className="container mx-auto px-4">
+          <div className="mb-12 text-center">
+            <h2 className="font-heading text-3xl md:text-4xl font-extrabold text-foreground mb-4">
+              Our Service Locations
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Bhairava Invisible Grills serves all major cities across Andhra Pradesh. Find us in your city and get professional invisible grills installation.
+            </p>
+          </div>
+
+          {/* Google Map Embed */}
+          <div className="w-full rounded-xl overflow-hidden shadow-lg mb-12 h-[500px]">
+            <iframe
+              width="100%"
+              height="500"
+              style={{ border: 0 }}
+              loading="lazy"
+              allowFullScreen={true}
+              referrerPolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1939592!2d77.5946!3d16.9891!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1625097600"
+              title="Bhairava Invisible Grills Service Locations across Andhra Pradesh"
+            />
+          </div>
+
+          {/* Location Cards */}
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            <div className="rounded-lg bg-card p-6 shadow-sm border-l-4 border-primary hover:shadow-md transition-shadow">
+              <h3 className="font-heading font-bold text-foreground mb-2">Visakhapatnam</h3>
+              <p className="text-muted-foreground text-sm mb-3">Coastal city specializing in marine-grade installations. 500+ completed projects.</p>
+              <a href="/locations/visakhapatnam" className="text-primary hover:underline text-sm font-medium">View details →</a>
+            </div>
+            <div className="rounded-lg bg-card p-6 shadow-sm border-l-4 border-primary hover:shadow-md transition-shadow">
+              <h3 className="font-heading font-bold text-foreground mb-2">Rajahmundry</h3>
+              <p className="text-muted-foreground text-sm mb-3">River-facing home specialists with 200+ installations along Godavari.</p>
+              <a href="/locations/rajahmundry" className="text-primary hover:underline text-sm font-medium">View details →</a>
+            </div>
+            <div className="rounded-lg bg-card p-6 shadow-sm border-l-4 border-primary hover:shadow-md transition-shadow">
+              <h3 className="font-heading font-bold text-foreground mb-2">Vijayawada</h3>
+              <p className="text-muted-foreground text-sm mb-3">Fast urban installation service for apartments and complexes. 350+ projects.</p>
+              <a href="/locations/vijayawada" className="text-primary hover:underline text-sm font-medium">View details →</a>
+            </div>
+            <div className="rounded-lg bg-card p-6 shadow-sm border-l-4 border-primary hover:shadow-md transition-shadow">
+              <h3 className="font-heading font-bold text-foreground mb-2">Guntur</h3>
+              <p className="text-muted-foreground text-sm mb-3">Climate-adapted solutions for warm regions. 250+ satisfied families.</p>
+              <a href="/locations/guntur" className="text-primary hover:underline text-sm font-medium">View details →</a>
+            </div>
+            <div className="rounded-lg bg-card p-6 shadow-sm border-l-4 border-primary hover:shadow-md transition-shadow">
+              <h3 className="font-heading font-bold text-foreground mb-2">Chittoor</h3>
+              <p className="text-muted-foreground text-sm mb-3">Heritage-aware installations for traditional and modern homes. 180+ projects.</p>
+              <a href="/locations/chittoor" className="text-primary hover:underline text-sm font-medium">View details →</a>
+            </div>
+            <div className="rounded-lg bg-card p-6 shadow-sm border-l-4 border-primary hover:shadow-md transition-shadow">
+              <h3 className="font-heading font-bold text-foreground mb-2">Tirupati</h3>
+              <p className="text-muted-foreground text-sm mb-3">Sacred-space respecting professional service. 220+ residential installations.</p>
+              <a href="/locations/tirupati" className="text-primary hover:underline text-sm font-medium">View details →</a>
+            </div>
+            <div className="rounded-lg bg-card p-6 shadow-sm border-l-4 border-primary hover:shadow-md transition-shadow">
+              <h3 className="font-heading font-bold text-foreground mb-2">Anantapur</h3>
+              <p className="text-muted-foreground text-sm mb-3">Harsh-climate durable stainless steel solutions. 150+ projects in Rayalaseema.</p>
+              <a href="/locations/anantapur" className="text-primary hover:underline text-sm font-medium">View details →</a>
+            </div>
+            <div className="rounded-lg bg-card p-6 shadow-sm border-l-4 border-primary hover:shadow-md transition-shadow">
+              <h3 className="font-heading font-bold text-foreground mb-2">All AP Cities</h3>
+              <p className="text-muted-foreground text-sm mb-3">1,700+ total installations with expert teams across all Andhra Pradesh.</p>
+              <a href="/locations" className="text-primary hover:underline text-sm font-medium">View all locations →</a>
             </div>
           </div>
         </div>

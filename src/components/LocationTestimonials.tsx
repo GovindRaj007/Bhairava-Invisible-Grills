@@ -1,9 +1,13 @@
 import { useRef } from 'react';
 import { Star } from 'lucide-react';
-import { getAllTestimonials } from '@/data/testimonials';
+import { Testimonial } from '@/data/testimonials';
 
-export default function Testimonials() {
-  const testimonials = getAllTestimonials();
+interface LocationTestimonialsProps {
+  locationName: string;
+  testimonials: Testimonial[];
+}
+
+export default function LocationTestimonials({ locationName, testimonials }: LocationTestimonialsProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const touchRef = useRef({ startX: 0, startTime: 0 });
 
@@ -31,13 +35,17 @@ export default function Testimonials() {
     }
   };
 
+  if (testimonials.length === 0) {
+    return null;
+  }
+
   return (
-    <section className="section-surface py-16 md:py-24">
+    <section className="section-surface pt-16">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <span className="golden-label mb-2 block">Testimonials</span>
           <h2 className="font-heading text-3xl md:text-4xl font-extrabold text-foreground">
-            What Visakhapatnam Families Say
+            What {locationName} Customers Say
           </h2>
         </div>
         <div
@@ -56,7 +64,10 @@ export default function Testimonials() {
                   <Star key={j} className="w-4 h-4 fill-primary text-primary" />
                 ))}
               </div>
-              <p className="text-foreground text-sm mb-4 italic">"{t.text}"</p>
+              <p className="text-foreground text-sm mb-2 italic">"{t.text}"</p>
+              {t.service && (
+                <p className="text-muted-foreground text-xs mb-3">Service: {t.service}</p>
+              )}
               <div className="flex items-center justify-between">
                 <span className="font-heading font-bold text-foreground text-sm">{t.name}</span>
                 <span className="golden-pill text-[10px]">{t.location}</span>

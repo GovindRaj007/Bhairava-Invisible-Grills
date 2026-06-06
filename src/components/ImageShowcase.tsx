@@ -3,25 +3,15 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import serviceInvisibleGrills3 from "@/assets/service-invisible-grills-3.jpg";
 import serviceInvisibleGrills5 from "@/assets/service-invisible-grills-5.jpg";
 import serviceWindowGrills from "@/assets/service-window-grills.jpg";
-import heroSafetyNets from "@/assets/hero-safety-nets.jpg";
-import servicePigeonNets from "@/assets/service-pigeon-nets.jpg";
-import serviceDuctNets from "@/assets/service-duct-nets.jpg";
 import heroCeilingHangers from "@/assets/hero-ceiling-hangers.jpg";
 import serviceCeilingHangers2 from "@/assets/service-ceiling-hangers-2.jpg";
-import heroSportsNets from "@/assets/hero-sports-nets.jpg";
-import serviceSportsNets2 from "@/assets/service-sports-nets-2.jpg";
 
 const showcaseImages = [
   { src: serviceInvisibleGrills3, alt: "Invisible Grills Installation", label: "Invisible Grills" },
   { src: serviceInvisibleGrills5, alt: "Balcony Invisible Grills", label: "Balcony Safety" },
   { src: serviceWindowGrills, alt: "Window Invisible Grills", label: "Window Protection" },
-  { src: heroSafetyNets, alt: "Child Safe Balcony Nets", label: "Safety Nets" },
-  { src: servicePigeonNets, alt: "Pigeon Nets", label: "Pigeon Protection" },
-  { src: serviceDuctNets, alt: "Duct Area Nets", label: "Duct Safety" },
   { src: heroCeilingHangers, alt: "Ceiling Hangers", label: "Ceiling Hangers" },
   { src: serviceCeilingHangers2, alt: "Drying Space Solutions", label: "Drying Solutions" },
-  { src: heroSportsNets, alt: "Sports Practice Nets", label: "Sports Courts" },
-  { src: serviceSportsNets2, alt: "Cricket Practice Area", label: "Cricket Nets" },
 ];
 
 export function ImageShowcase() {

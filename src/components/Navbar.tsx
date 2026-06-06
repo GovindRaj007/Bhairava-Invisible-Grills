@@ -1,18 +1,23 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { serviceCategories, BUSINESS } from '@/data/services';
+import { getAllLocations } from '@/data/locations';
 import { Menu, X, Phone, ChevronDown, ChevronRight } from 'lucide-react';
-import MorsafeLogo from '@/assets/Morsafe-logo.jpg';
+import BhairavaLogo from '@/assets/Bhairava-logo.jpg';
 import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetDescription } from '@/components/ui/sheet';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [megaOpen, setMegaOpen] = useState(false);
+  const [locationsOpen, setLocationsOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const [locationsDrawerOpen, setLocationsDrawerOpen] = useState(false);
   const [expandedCategory, setExpandedCategory] = useState<string | null>(null);
   const location = useLocation();
   const megaRef = useRef<HTMLDivElement>(null);
+  const locationsRef = useRef<HTMLDivElement>(null);
+  const allLocations = getAllLocations();
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 50);
@@ -23,7 +28,9 @@ export default function Navbar() {
   useEffect(() => {
     setMobileOpen(false);
     setMegaOpen(false);
+    setLocationsOpen(false);
     setServicesOpen(false);
+    setLocationsDrawerOpen(false);
     setExpandedCategory(null);
   }, [location]);
 
@@ -42,9 +49,9 @@ export default function Navbar() {
             className="flex items-center gap-2 relative z-[120] bg-transparent"
           >
             <img 
-              src={MorsafeLogo} 
-              alt="MorSafe Logo" 
-              className="h-14 w-auto object-contain"
+              src={BhairavaLogo} 
+              alt="Bhairava Invisible Grills Logo" 
+              className="h-14 md:h-[4.5rem] w-auto object-contain"
             />
           </Link>
 
@@ -72,7 +79,7 @@ export default function Navbar() {
                           {cat.subServices.map((sub) => (
                             <li key={sub.slug}>
                               <Link
-                                to={`/services/${cat.slug}/${sub.slug}`}
+                                to={`/services/${sub.slug}`}
                                 onClick={() => window.scrollTo(0, 0)}
                                 className="text-secondary-foreground/70 hover:text-primary text-xs transition-colors"
                               >
@@ -90,6 +97,43 @@ export default function Navbar() {
             <Link to="/about" onClick={() => window.scrollTo(0, 0)} className="text-foreground hover:text-primary text-sm lg:text-base font-medium transition-colors">
               About
             </Link>
+            <div
+              className="relative"
+              onMouseEnter={() => setLocationsOpen(true)}
+              onMouseLeave={() => setLocationsOpen(false)}
+              ref={locationsRef}
+            >
+              <button className="flex items-center gap-1 text-foreground hover:text-primary text-sm lg:text-base font-medium transition-colors">
+                Locations <ChevronDown className="w-3 h-3" />
+              </button>
+              {locationsOpen && (
+                <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 w-[400px]">
+                  <div className="bg-secondary rounded-lg shadow-xl border border-primary/10 p-6">
+                    <div className="grid grid-cols-2 gap-4">
+                      {allLocations.map((loc) => (
+                        <Link
+                          key={loc.slug}
+                          to={`/locations/${loc.slug}`}
+                          onClick={() => window.scrollTo(0, 0)}
+                          className="text-secondary-foreground/70 hover:text-primary text-sm transition-colors font-medium"
+                        >
+                          {loc.displayName}
+                        </Link>
+                      ))}
+                    </div>
+                    <div className="mt-4 pt-4 border-t border-primary/10">
+                      <Link
+                        to="/locations"
+                        onClick={() => window.scrollTo(0, 0)}
+                        className="text-primary font-bold text-sm hover:underline"
+                      >
+                        View All Locations →
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
             <Link to="/contact" onClick={() => window.scrollTo(0, 0)} className="text-foreground hover:text-primary text-sm lg:text-base font-medium transition-colors">
               Contact
             </Link>
@@ -113,7 +157,7 @@ export default function Navbar() {
             <SheetContent side="right" className="w-full sm:w-80 p-0 flex flex-col bg-background pt-12">
               {/* Accessibility - Hidden but available for screen readers */}
               <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
-              <SheetDescription className="sr-only">Browse MorSafe services and pages</SheetDescription>
+              <SheetDescription className="sr-only">Browse Bhairava Invisible Grills services and pages</SheetDescription>
               
               {/* Navigation Items */}
               <div className="flex-1 overflow-y-auto px-6 scrollbar-hide [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
@@ -169,7 +213,7 @@ export default function Navbar() {
                               {category.subServices.map((subService) => (
                                 <Link
                                   key={subService.slug}
-                                  to={`/services/${category.slug}/${subService.slug}`}
+                                  to={`/services/${subService.slug}`}
                                   onClick={() => {
                                     setMobileOpen(false);
                                     window.scrollTo(0, 0);
@@ -183,6 +227,45 @@ export default function Navbar() {
                           )}
                         </div>
                       ))}
+                    </div>
+                  )}
+                </div>
+
+                {/* Locations */}
+                <div>
+                  <button
+                    onClick={() => setLocationsDrawerOpen(!locationsDrawerOpen)}
+                    className="w-full py-4 flex items-center justify-between text-foreground font-medium hover:text-primary transition-colors"
+                  >
+                    <span>Locations</span>
+                    <ChevronDown className={`w-5 h-5 transition-transform ${locationsDrawerOpen ? 'rotate-180' : ''}`} />
+                  </button>
+                  
+                  {locationsDrawerOpen && (
+                    <div className="space-y-2 pb-4">
+                      {allLocations.map((loc) => (
+                        <Link
+                          key={loc.slug}
+                          to={`/locations/${loc.slug}`}
+                          onClick={() => {
+                            setMobileOpen(false);
+                            window.scrollTo(0, 0);
+                          }}
+                          className="block px-6 py-2.5 text-sm text-primary hover:text-yellow-400 transition-colors font-medium"
+                        >
+                          {loc.displayName}
+                        </Link>
+                      ))}
+                      <Link
+                        to="/locations"
+                        onClick={() => {
+                          setMobileOpen(false);
+                          window.scrollTo(0, 0);
+                        }}
+                        className="block px-6 py-2.5 text-sm text-primary font-bold hover:text-yellow-400 transition-colors"
+                      >
+                        View All →
+                      </Link>
                     </div>
                   )}
                 </div>

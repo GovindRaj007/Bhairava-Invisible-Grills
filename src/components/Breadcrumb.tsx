@@ -1,11 +1,9 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { ChevronRight, Home } from 'lucide-react';
 
 interface BreadcrumbItem {
   label: string;
   href?: string;
-  /** If set, navigates to this path and scrolls to #services with this category active */
-  serviceCategorySlug?: string;
 }
 
 interface BreadcrumbProps {
@@ -13,32 +11,18 @@ interface BreadcrumbProps {
 }
 
 export default function Breadcrumb({ items }: BreadcrumbProps) {
-  const navigate = useNavigate();
-
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://morsafe.in/' },
-      ...items.map((item, i) => ({
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://bhairavainvisiblegrills.in/' },
+      ...items.map((item, index) => ({
         '@type': 'ListItem',
-        position: i + 2,
+        position: index + 2,
         name: item.label,
-        ...(item.href ? { item: `https://morsafe.in${item.href}` } : {}),
+        ...(item.href ? { item: `https://bhairavainvisiblegrills.in${item.href}` } : {}),
       })),
     ],
-  };
-
-  const handleClick = (item: BreadcrumbItem, e: React.MouseEvent) => {
-    if (item.serviceCategorySlug) {
-      e.preventDefault();
-      // Store the category slug so the services section can read it
-      sessionStorage.setItem('activeServiceCategory', item.serviceCategorySlug);
-      navigate('/#services');
-      setTimeout(() => {
-        document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
-      }, 100);
-    }
   };
 
   return (
@@ -54,7 +38,6 @@ export default function Breadcrumb({ items }: BreadcrumbProps) {
             {item.href ? (
               <Link
                 to={item.href}
-                onClick={(e) => handleClick(item, e)}
                 className="text-primary hover:underline"
               >
                 {item.label}

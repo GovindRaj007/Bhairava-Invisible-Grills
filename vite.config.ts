@@ -63,7 +63,5 @@ export default defineConfig({
   server: {
     port: 5173,
     middlewareMode: false,
-    // Ensure all non-existent routes fall back to index.html
-    historyApiFallback: true,
   },
 });

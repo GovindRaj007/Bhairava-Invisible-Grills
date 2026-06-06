@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import { BUSINESS, serviceCategories } from '@/data/services';
-import { Shield, ShieldCheck, Eye, Users, Award, Clock, CheckCircle, Phone, Mail, MapPin } from 'lucide-react';
+import { Shield, Eye, Users, Award, Clock, CheckCircle, Phone, Mail, MapPin } from 'lucide-react';
 import CTASection from '@/components/CTASection';
 import { useScrollRestoration } from '@/hooks/useScrollRestoration';
 
@@ -25,9 +25,13 @@ export default function About() {
   return (
     <>
       <Helmet>
-        <title>About MorSafe — Exterior Safety Solutions in Chennai</title>
-        <meta name="description" content="Learn about MorSafe, Chennai's trusted provider of invisible grills, safety nets, sports nets, and ceiling cloth drying hangers. 500+ installations. Warranty-based ." />
-        <link rel="canonical" href="https://morsafe.in/about" />
+        <title>About Bhairava Invisible Grills - Best in Visakhapatnam</title>
+        <meta name="description" content="About Bhairava Invisible Grills. Best invisible grills provider in Visakhapatnam (Vizag). Strong, secure stainless steel grills and ceiling hangers. 10-year warranty." />
+        <link rel="canonical" href="https://bhairavainvisiblegrills.in/about" />
+        <meta property="og:title" content="About Bhairava - Visakhapatnam's Trusted Invisible Grills Partner" />
+        <meta property="og:description" content="Learn about Bhairava Invisible Grills - Vizag's leading provider of invisible grills and ceiling cloth hangers with 10-year warranty." />
+        <meta property="og:url" content="https://bhairavainvisiblegrills.in/about" />
+        <meta property="og:type" content="website" />
       </Helmet>
 
       {/* Hero */}
@@ -35,10 +39,10 @@ export default function About() {
           <div className="container mx-auto px-4 text-center">
             <span className="golden-label mb-4 block">About Us</span>
             <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl font-extrabold text-secondary-foreground mb-6">
-              Chennai's Trusted <span className="text-primary">Safety Partner</span>
+              Visakhapatnam's Trusted <span className="text-primary">Invisible Grills Partner</span>
             </h1>
             <p className="text-secondary-foreground/70 max-w-2xl mx-auto text-base md:text-lg leading-relaxed">
-              MorSafe is Chennai's leading provider of exterior safety solutions — from invisible grills and safety nets to sports nets and ceiling cloth drying hangers. We combine premium materials, expert craftsmanship, and transparent service to protect what matters most — your family.
+              Bhairava Invisible Grills is Visakhapatnam's leading provider of exterior safety solutions — from invisible grills to ceiling cloth drying hangers. We combine premium materials, expert craftsmanship, and transparent service to protect what matters most — your family.
             </p>
           </div>
         </section>
@@ -50,13 +54,13 @@ export default function About() {
               Our Story
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              Founded with a mission to make Chennai homes safer, MorSafe began as a small team of safety installation experts passionate about protecting families in high-rise apartments. Over the years, we've grown into a full-service exterior safety company serving hundreds of residential and commercial clients across Chennai.
+              Founded with a mission to make Visakhapatnam homes safer, Bhairava Invisible Grills began as a dedicated team of installation experts passionate about protecting families in high-rise apartments in Vizag. Over the years, we've grown into a trusted provider serving hundreds of residential clients across Visakhapatnam.
             </p>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              Chennai's rapidly growing skyline — with its sea-facing condominiums, modern apartment complexes, and independent villas — demands safety solutions that don't compromise on aesthetics. That's exactly what we deliver. Whether it's invisible grills for your balcony, child-safe nets, pigeon deterrent mesh, or a ceiling-mounted drying system, every MorSafe installation is built to last.
+              Vizag's rapidly growing skyline — with its sea-facing condominiums, modern apartment complexes, and independent villas — demands strong, secure safety solutions that don't compromise on aesthetics. That's exactly what we deliver. Whether it's invisible grills for your balcony and windows or a ceiling-mounted cloth-drying system, every Bhairava installation is built to last.
             </p>
             <p className="text-muted-foreground leading-relaxed">
-              We serve all of Chennai — from Anna Nagar and T. Nagar to OMR, Velachery, Adyar, Tambaram, Porur, and Nungambakkam — with same-day site visits, transparent pricing, and industry-leading warranties.
+              We serve all of Visakhapatnam with same-day site visits, transparent pricing, and industry-leading warranties. Find the best invisible grills near you in Vizag with Bhairava.
             </p>
           </div>
         </section>
@@ -103,11 +107,11 @@ export default function About() {
             <h2 className="font-heading text-2xl md:text-3xl font-extrabold text-foreground text-center mb-10">
               What We Offer
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
               {serviceCategories.map((cat) => (
                 <div key={cat.slug} className="bg-secondary rounded-lg p-6 text-center">
                   <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-3">
-                    <ShieldCheck className="w-6 h-6 text-primary" />
+                    <Shield className="w-6 h-6 text-primary" />
                   </div>
                   <h3 className="font-heading font-bold text-secondary-foreground text-sm mb-2">{cat.name}</h3>
                   <p className="text-secondary-foreground/60 text-xs">

@@ -14,6 +14,8 @@ import LoadingPages from "@/components/LoadingPages";
 
 // Code-split pages that aren't needed on initial load
 const ServicePage = lazy(() => import("./pages/ServicePage"));
+const LocationsIndex = lazy(() => import("./pages/LocationsIndex"));
+const LocationPage = lazy(() => import("./pages/LocationPage"));
 const Contact = lazy(() => import("./pages/Contact"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const About = lazy(() => import("./pages/About"));
@@ -33,7 +35,9 @@ const App = () => (
           <main className="pt-16 md:pt-20">
             <Routes>
               <Route path="/" element={<Index />} />
-              <Route path="/services/:categorySlug/:serviceSlug" element={<Suspense fallback={<LoadingPages />}><ServicePage /></Suspense>} />
+              <Route path="/services/:serviceSlug" element={<Suspense fallback={<LoadingPages />}><ServicePage /></Suspense>} />
+              <Route path="/locations" element={<Suspense fallback={<LoadingPages />}><LocationsIndex /></Suspense>} />
+              <Route path="/locations/:locationSlug" element={<Suspense fallback={<LoadingPages />}><LocationPage /></Suspense>} />
               <Route path="/contact" element={<Suspense fallback={<LoadingPages />}><Contact /></Suspense>} />
               <Route path="/privacy-policy" element={<Suspense fallback={<LoadingPages />}><PrivacyPolicy /></Suspense>} />
               <Route path="/about" element={<Suspense fallback={<LoadingPages />}><About /></Suspense>} />

@@ -3,17 +3,16 @@ import { Phone } from 'lucide-react';
 
 interface CTASectionProps {
   categorySlug?: string;
+  serviceSlug?: string;
 }
 
-export default function CTASection({ categorySlug }: CTASectionProps) {
-  const isSportsCategory = categorySlug === 'sports-nets';
-  const isCeilingHangers = categorySlug === 'ceiling-hangers';
-  
+export default function CTASection({ categorySlug, serviceSlug }: CTASectionProps) {
   const getHeading = () => {
-    if (isSportsCategory) {
-      return "Ready to Set Up Your Practice Arena?";
+    // Support both old and new parameter passing
+    if (serviceSlug === 'ceiling-hangers-installation') {
+      return "Ready to Save Your Drying Space?";
     }
-    if (isCeilingHangers) {
+    if (categorySlug === 'ceiling-hangers') {
       return "Ready to Save Your Drying Space?";
     }
     return "Ready to Secure Your Home?";
@@ -33,7 +32,7 @@ export default function CTASection({ categorySlug }: CTASectionProps) {
             <Phone className="w-4 h-4" /> Call Now
           </a>
           <a
-            href={`https://wa.me/${BUSINESS.whatsapp}?text=Hi%20MorSafe,%20I'm%20interested%20in%20your%20services.`}
+            href={`https://wa.me/${BUSINESS.whatsapp}?text=Hi%20Bhairava,%20I'm%20interested%20in%20invisible%20grills%20in%20Vizag.`}
             target="_blank"
             rel="noopener noreferrer"
             className="bg-transparent text-foreground font-heading font-bold px-6 py-3 rounded-lg border-2 border-foreground/30 transition-all hover:border-foreground"

@@ -7,21 +7,22 @@ import { BUSINESS } from '@/data/services';
 
 const badgeTexts: Record<string, string> = {
   'invisible-grills': 'Trusted Home Safety Experts',
-  'safety-nets': 'Certified Protection for Your Family',
   'ceiling-hangers': 'Professional Hanging Solutions',
-  'sports-nets': 'Professional Sports Facilities',
 };
 
-const slides = serviceCategories.map((cat) => ({
-  label: cat.label,
-  headline: cat.headline,
-  subtext: cat.subtext,
-  pills: cat.pills,
-  image: heroImages[cat.slug],
-  link: `/services/${cat.slug}/${cat.subServices[0].slug}`,
-  slug: cat.slug,
-  badgeText: badgeTexts[cat.slug] || 'Trusted Home Safety Experts',
-}));
+// Create slides from only Invisible Grills and Ceiling Hangers categories
+const slides = serviceCategories
+  .filter((cat) => cat.slug === 'invisible-grills' || cat.slug === 'ceiling-hangers')
+  .map((cat) => ({
+    label: cat.label,
+    headline: cat.headline,
+    subtext: cat.subtext,
+    pills: cat.pills,
+    image: heroImages[cat.slug],
+    link: `/services/${cat.subServices[0].slug}`,
+    slug: cat.slug,
+    badgeText: badgeTexts[cat.slug] || 'Trusted Home Safety Experts',
+  }));
 
 export default function HeroSlider() {
   const [current, setCurrent] = useState(0);
