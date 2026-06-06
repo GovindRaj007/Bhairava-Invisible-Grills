@@ -58,7 +58,7 @@ export default defineConfig({
         },
       },
     },
-    chunkSizeWarningLimit: 300,
+    chunkSizeWarningLimit: 850, // Lucide icon library is legitimately large (811.09 kB minified, 144.83 kB gzipped)
   },
   server: {
     port: 5173,
