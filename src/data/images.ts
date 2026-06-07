@@ -19,15 +19,15 @@ export const heroImages: Record<string, string> = {
 
 // Flat service images structure by service slug
 export const serviceImagesBySlug: Record<string, string[]> = {
-  'installation': [heroInvisibleGrills, serviceInvisibleGrills5, serviceInvisibleGrills3],
-  'balconies': [serviceInvisibleGrills4, serviceInvisibleGrills3, serviceInvisibleGrills6],
-  'windows': [serviceWindowGrills, serviceWindowGrills2, serviceWindowGrills3],
-  'ceiling-cloth-hangers': [serviceCeilingHangers3, heroCeilingHangers, serviceCeilingHangers2],
+  'invisible-grills-installation': [heroInvisibleGrills, serviceInvisibleGrills5, serviceInvisibleGrills3],
+  'invisible-grills-balconies': [serviceInvisibleGrills4, serviceInvisibleGrills3, serviceInvisibleGrills6],
+  'invisible-grills-windows': [serviceWindowGrills, serviceWindowGrills2, serviceWindowGrills3],
+  'ceiling-cloth-hangers-installation': [serviceCeilingHangers3, heroCeilingHangers, serviceCeilingHangers2],
 };
 
 export const serviceCardImagesBySlug: Record<string, string> = {
-  'installation': serviceInvisibleGrills2,
-  'balconies': serviceInvisibleGrills5,
-  'windows': serviceWindowGrills2,
-  'ceiling-cloth-hangers': heroCeilingHangers,
+  'invisible-grills-installation': serviceInvisibleGrills2,
+  'invisible-grills-balconies': serviceInvisibleGrills5,
+  'invisible-grills-windows': serviceWindowGrills2,
+  'ceiling-cloth-hangers-installation': heroCeilingHangers,
 };

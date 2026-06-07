@@ -52,7 +52,7 @@ export const serviceCategories: ServiceCategory[] = [
     subServices: [
       {
         name: "Invisible Grills Installation",
-        slug: "installation",
+        slug: "invisible-grills-installation",
         description: "Professional installation of stainless steel invisible grills for apartments and villas.",
         heroTitle: "Best Invisible Grills Installation in Andhra Pradesh",
         metaTitle: "Best Invisible Grills Installation in AP | Bhairava Invisible Grills",
@@ -91,7 +91,7 @@ export const serviceCategories: ServiceCategory[] = [
       },
       {
         name: "Invisible Grills for Balconies",
-        slug: "balconies",
+        slug: "invisible-grills-balconies",
         description: "Transparent cable grills for high-rise balconies with panoramic city views.",
         heroTitle: "Best Balcony Invisible Grills in Andhra Pradesh",
         metaTitle: "Best Balcony Invisible Grills in AP | Bhairava",
@@ -129,7 +129,7 @@ export const serviceCategories: ServiceCategory[] = [
       },
       {
         name: "Invisible Grills for Windows",
-        slug: "windows",
+        slug: "invisible-grills-windows",
         description: "Stainless steel cable grills for windows — safety without blocking light or air.",
         heroTitle: "Best Window Invisible Grills in Andhra Pradesh",
         metaTitle: "Best Window Invisible Grills in AP | Bhairava",
@@ -178,7 +178,7 @@ export const serviceCategories: ServiceCategory[] = [
     subServices: [
       {
         name: "Ceiling Cloth Drying Hangers Installation",
-        slug: "ceiling-cloth-hangers",
+        slug: "ceiling-cloth-hangers-installation",
         description: "Ceiling-mounted pulley drying rack systems for modern apartments.",
         heroTitle: "Space-Saving Ceiling Cloth Hangers in Andhra Pradesh",
         metaTitle: "Ceiling Cloth Hangers in AP | Strong & Secure | Bhairava",

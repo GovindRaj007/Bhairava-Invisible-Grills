@@ -43,10 +43,10 @@ export default function ServicePage() {
       <Helmet>
         <title>{service.metaTitle}</title>
         <meta name="description" content={service.metaDescription} />
-        <link rel="canonical" href={`https://bhairavainvisiblegrills.in/services/${serviceSlug}`} />
+        <link rel="canonical" href={`https://bhairavainvisiblegrills.in/services/${service.slug}`} />
         <meta property="og:title" content={service.metaTitle} />
         <meta property="og:description" content={service.metaDescription} />
-        <meta property="og:url" content={`https://bhairavainvisiblegrills.in/services/${serviceSlug}`} />
+        <meta property="og:url" content={`https://bhairavainvisiblegrills.in/services/${service.slug}`} />
         <script type="application/ld+json">{JSON.stringify(serviceJsonLd)}</script>
       </Helmet>
 
