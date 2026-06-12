@@ -1,13 +1,13 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
   
+  # Remove www from URL - redirect to non-www version
+  RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+  RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+  
   # Force HTTPS
   RewriteCond %{HTTPS} off
   RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-  
-  # Remove www from URL (optional: use if you want non-www as canonical)
-  # RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
-  # RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
   
   # SPA routing - serve index.html for non-existent files/folders
   RewriteCond %{REQUEST_FILENAME} !-f

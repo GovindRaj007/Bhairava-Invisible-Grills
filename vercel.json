@@ -4,6 +4,19 @@
   "env": {
     "CANONICAL_URL": "https://bhairavainvisiblegrills.in"
   },
+  "redirects": [
+    {
+      "source": "/:path((?!.*\\.).*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.bhairavainvisiblegrills.in"
+        }
+      ],
+      "destination": "https://bhairavainvisiblegrills.in/:path",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/(.*)",
