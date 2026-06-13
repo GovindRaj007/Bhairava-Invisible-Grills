@@ -6,20 +6,28 @@
   },
   "redirects": [
     {
-      "source": "/:path((?!.*\\.).*)",
+      "source": "/:path*",
       "has": [
         {
           "type": "host",
           "value": "www.bhairavainvisiblegrills.in"
         }
       ],
-      "destination": "https://bhairavainvisiblegrills.in/:path",
+      "destination": "https://bhairavainvisiblegrills.in/:path*",
       "permanent": true
     }
   ],
   "rewrites": [
     {
-      "source": "/(.*)",
+      "source": "/sitemap.xml",
+      "destination": "/sitemap.xml"
+    },
+    {
+      "source": "/robots.txt",
+      "destination": "/robots.txt"
+    },
+    {
+      "source": "/:path*",
       "destination": "/index.html"
     }
   ],
@@ -30,6 +38,10 @@
         {
           "key": "Content-Type",
           "value": "application/xml"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
         }
       ]
     },
@@ -39,11 +51,15 @@
         {
           "key": "Content-Type",
           "value": "text/plain"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
         }
       ]
     },
     {
-      "source": "/assets/(.*)",
+      "source": "/assets/:path*",
       "headers": [
         {
           "key": "Cache-Control",
@@ -52,7 +68,7 @@
       ]
     },
     {
-      "source": "/(.*)\\.js",
+      "source": "/:path*\\.js",
       "headers": [
         {
           "key": "Cache-Control",
@@ -61,7 +77,7 @@
       ]
     },
     {
-      "source": "/(.*)\\.css",
+      "source": "/:path*\\.css",
       "headers": [
         {
           "key": "Cache-Control",
@@ -70,7 +86,7 @@
       ]
     },
     {
-      "source": "/(.*)",
+      "source": "/:path*",
       "headers": [
         {
           "key": "Cache-Control",
