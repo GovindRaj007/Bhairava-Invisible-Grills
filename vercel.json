@@ -10,6 +10,23 @@
           "value": "www.bhairavainvisiblegrills.in"
         }
       ],
+      "exclude": [
+        "/assets/:path*",
+        "/favicon.jpg",
+        "/:path*\\.js",
+        "/:path*\\.css",
+        "/:path*\\.json",
+        "/:path*\\.png",
+        "/:path*\\.jpg",
+        "/:path*\\.jpeg",
+        "/:path*\\.gif",
+        "/:path*\\.svg",
+        "/:path*\\.webp",
+        "/:path*\\.woff",
+        "/:path*\\.woff2",
+        "/:path*\\.ttf",
+        "/:path*\\.eot"
+      ],
       "destination": "https://bhairavainvisiblegrills.in/:path*",
       "permanent": true
     }
