@@ -1,19 +1,6 @@
 {
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
-  "redirects": [
-    {
-      "source": "/:path((?!.*\\.).*)*",
-      "has": [
-        {
-          "type": "host",
-          "value": "www.bhairavainvisiblegrills.in"
-        }
-      ],
-      "destination": "https://bhairavainvisiblegrills.in/:path*",
-      "permanent": true
-    }
-  ],
   "rewrites": [
     {
       "source": "/:path*",
