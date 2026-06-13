@@ -44,6 +44,7 @@ export default function Index() {
       <Helmet>
         <title>Best Invisible Grills in Visakhapatnam (Vizag) | Bhairava</title>
         <meta name="description" content="Best invisible grills in Visakhapatnam. Strong, secure SS 316 stainless steel grills for balconies and windows. Also ceiling cloth hangers. Free site visit near you. Call now." />
+        <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://bhairavainvisiblegrills.in/" />
         <meta property="og:title" content="Best Invisible Grills in Vizag - Balcony & Window | Bhairava" />
         <meta property="og:description" content="Strong & secure invisible grills in Visakhapatnam. Best balcony and window grills. Stainless steel construction. Free quote. Call Bhairava near me." />

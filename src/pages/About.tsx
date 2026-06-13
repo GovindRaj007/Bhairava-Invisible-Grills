@@ -27,6 +27,7 @@ export default function About() {
       <Helmet>
         <title>About Bhairava Invisible Grills - Best in Visakhapatnam</title>
         <meta name="description" content="About Bhairava Invisible Grills. Best invisible grills provider in Visakhapatnam (Vizag). Strong, secure stainless steel grills and ceiling hangers. 10-year warranty." />
+        <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://bhairavainvisiblegrills.in/about" />
         <meta property="og:title" content="About Bhairava - Visakhapatnam's Trusted Invisible Grills Partner" />
         <meta property="og:description" content="Learn about Bhairava Invisible Grills - Vizag's leading provider of invisible grills and ceiling cloth hangers with 10-year warranty." />

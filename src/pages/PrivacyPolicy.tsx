@@ -10,6 +10,7 @@ export default function PrivacyPolicy() {
       <Helmet>
         <title>Privacy Policy | Bhairava Invisible Grills</title>
         <meta name="description" content="Privacy policy for Bhairava Invisible Grills. Learn how we protect your personal information." />
+        <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://bhairavainvisiblegrills.in/privacy-policy" />
         <meta property="og:title" content="Privacy Policy - Bhairava Invisible Grills" />
         <meta property="og:description" content="Privacy policy for Bhairava Invisible Grills. We protect your personal information with appropriate security measures." />

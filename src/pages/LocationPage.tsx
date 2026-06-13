@@ -69,6 +69,7 @@ export default function LocationPage() {
       <Helmet>
         <title>{location.metaTitle}</title>
         <meta name="description" content={location.metaDescription} />
+        <meta name="robots" content="index, follow" />
         <link rel="canonical" href={location.canonicalUrl} />
         <meta property="og:title" content={location.metaTitle} />
         <meta property="og:description" content={location.metaDescription} />

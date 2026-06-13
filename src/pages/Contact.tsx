@@ -202,6 +202,7 @@ export default function Contact() {
       <Helmet>
         <title>Contact Bhairava - Best Invisible Grills Quote in Vizag</title>
         <meta name="description" content="Contact Bhairava Invisible Grills for a free quote on invisible grills and ceiling hangers in Visakhapatnam. Call or WhatsApp us near you today." />
+        <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://bhairavainvisiblegrills.in/contact" />
         <meta property="og:title" content="Contact Bhairava Invisible Grills - Free Quote in Vizag" />
         <meta property="og:description" content="Get a free quote on invisible grills and ceiling hangers in Visakhapatnam. Contact Bhairava Invisible Grills now." />

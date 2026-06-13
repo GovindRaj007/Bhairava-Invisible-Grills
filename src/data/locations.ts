@@ -30,7 +30,7 @@ export const locations: LocationData[] = [
     heroSubtitle: 'Strong, Secure Window & Balcony Grills for Coastal Living',
     metaTitle: 'Best Invisible Grills in Visakhapatnam (Vizag) | Bhairava',
     metaDescription: 'Best invisible grills in Visakhapatnam. Strong, secure stainless steel grills for balconies and windows. Ceiling cloth hangers. Free quote near you. Call now.',
-    canonicalUrl: 'https://bhairavainvisiblegrills.in/visakhapatnam',
+    canonicalUrl: 'https://bhairavainvisiblegrills.in/locations/visakhapatnam',
     introText: `Visakhapatnam's rapidly growing skyline of high-rise apartments, sea-facing condominiums, and modern villas demands strong, secure safety solutions that don't compromise on aesthetics. Bhairava brings the best invisible grills and ceiling cloth hangers to homes and buildings across every Vizag neighborhood.`,
     benefits: [
       { icon: 'Building2', title: 'High-Rise Apartments', description: 'Essential safety for Visakhapatnam\'s growing skyline of multi-story buildings.' },
@@ -65,7 +65,7 @@ export const locations: LocationData[] = [
     heroSubtitle: 'Premium Safety Solutions for East Godavari Homes',
     metaTitle: 'Best Invisible Grills in Rajahmundry | Bhairava Invisible Grills',
     metaDescription: 'Invisible grills in Rajahmundry. Strong, secure stainless steel grills for balconies and windows. Professional installation near you. Free site visit.',
-    canonicalUrl: 'https://bhairavainvisiblegrills.in/rajahmundry',
+    canonicalUrl: 'https://bhairavainvisiblegrills.in/locations/rajahmundry',
     introText: `Rajahmundry, nestled along the Godavari River, combines traditional charm with modern urban growth. Bhairava brings strong, secure invisible grills to Rajahmundry's residential apartments, colonial villas, and riverfront homes. Our marine-grade stainless steel construction ensures durability even in Rajahmundry's humid climate.`,
     benefits: [
       { icon: 'Building2', title: 'River-Facing Homes', description: 'Secure protection for Rajahmundry\'s riverside villas and apartments with unobstructed river views.' },
@@ -100,7 +100,7 @@ export const locations: LocationData[] = [
     heroSubtitle: 'Strong & Secure Solutions for AP\'s Growth City',
     metaTitle: 'Best Invisible Grills in Vijayawada | Bhairava',
     metaDescription: 'Invisible grills in Vijayawada. Strong, secure stainless steel grills for balconies and windows. Ceiling cloth hangers installation. Free quote nearby.',
-    canonicalUrl: 'https://bhairavainvisiblegrills.in/vijayawada',
+    canonicalUrl: 'https://bhairavainvisiblegrills.in/locations/vijayawada',
     introText: `Vijayawada, Andhra Pradesh's commercial and industrial hub, is experiencing rapid urban growth with luxury apartment complexes and modern residential developments. Bhairava provides strong, secure invisible grills tailored for Vijayawada's bustling cityscape, ensuring maximum security without compromising your urban lifestyle.`,
     benefits: [
       { icon: 'Building2', title: 'Urban Apartment Experts', description: 'Specialized in high-density residential complexes across Vijayawada.' },
@@ -135,7 +135,7 @@ export const locations: LocationData[] = [
     heroSubtitle: 'Secure Home Protection for Guntur Families',
     metaTitle: 'Best Invisible Grills in Guntur | Bhairava',
     metaDescription: 'Invisible grills in Guntur. Strong, secure stainless steel grills for balconies and windows. Professional installation and free quote.',
-    canonicalUrl: 'https://bhairavainvisiblegrills.in/guntur',
+    canonicalUrl: 'https://bhairavainvisiblegrills.in/locations/guntur',
     introText: `Guntur, the spice capital of Andhra Pradesh, is a vibrant city combining agricultural heritage with modern urbanization. Bhairava brings trusted invisible grill solutions to Guntur's growing residential developments, ensuring families enjoy strong, secure protection without compromising natural light and ventilation.`,
     benefits: [
       { icon: 'Building2', title: 'Residential Specialists', description: 'Trusted by Guntur families for secure home protection.' },
@@ -170,7 +170,7 @@ export const locations: LocationData[] = [
     heroSubtitle: 'Strong Safety for the Temple City',
     metaTitle: 'Best Invisible Grills in Chittoor | Bhairava',
     metaDescription: 'Invisible grills in Chittoor. Strong, secure stainless steel grills for balconies and windows. Expert installation and free assessment.',
-    canonicalUrl: 'https://bhairavainvisiblegrills.in/chittoor',
+    canonicalUrl: 'https://bhairavainvisiblegrills.in/locations/chittoor',
     introText: `Chittoor, home to the sacred Tirupati pilgrimage sites and a thriving residential community, demands safety solutions that respect the city's spiritual heritage. Bhairava provides modern, unobtrusive invisible grills that protect Chittoor homes while maintaining the city's traditional aesthetic.`,
     benefits: [
       { icon: 'Building2', title: 'Heritage Aware', description: 'Invisible grills respect Chittoor\'s spiritual and traditional architecture.' },
@@ -205,7 +205,7 @@ export const locations: LocationData[] = [
     heroSubtitle: 'Sacred Security for the Temple City',
     metaTitle: 'Best Invisible Grills in Tirupati | Bhairava',
     metaDescription: 'Invisible grills in Tirupati. Strong, secure stainless steel grills for balconies and windows. Free site visit and professional installation.',
-    canonicalUrl: 'https://bhairavainvisiblegrills.in/tirupati',
+    canonicalUrl: 'https://bhairavainvisiblegrills.in/locations/tirupati',
     introText: `Tirupati, home to the world-renowned Tirupati Temple and a rapidly growing residential community, deserves safety solutions that match the city's spiritual significance. Bhairava delivers invisible grills that provide strong, secure protection while respecting Tirupati's sacred character.`,
     benefits: [
       { icon: 'Building2', title: 'Pilgrimage City Experts', description: 'Specialized knowledge of Tirupati\'s unique residential patterns.' },
@@ -240,7 +240,7 @@ export const locations: LocationData[] = [
     heroSubtitle: 'Smart Security for Rayalaseema\'s Growing City',
     metaTitle: 'Best Invisible Grills in Anantapur | Bhairava',
     metaDescription: 'Invisible grills in Anantapur. Strong, secure stainless steel grills for balconies and windows. Ceiling cloth hangers installation. Free quote.',
-    canonicalUrl: 'https://bhairavainvisiblegrills.in/anantapur',
+    canonicalUrl: 'https://bhairavainvisiblegrills.in/locations/anantapur',
     introText: `Anantapur, the historic center of Rayalaseema region, is experiencing steady residential growth with modern apartment complexes and upgraded homes. Bhairava brings proven invisible grill solutions to Anantapur families, combining strong security with the durability needed for the region's semi-arid climate.`,
     benefits: [
       { icon: 'Building2', title: 'Rayalaseema Specialists', description: 'Tailored solutions for Anantapur\'s unique regional climate and architecture.' },

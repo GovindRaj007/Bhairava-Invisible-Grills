@@ -48,6 +48,7 @@ export default function LocationsIndex() {
           name="description"
           content="Find Bhairava Invisible Grills near you in Visakhapatnam, Rajahmundry, Vijayawada, Guntur, Chittoor, Tirupati, and Anantapur. Strong, secure stainless steel grills and ceiling hangers."
         />
+        <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://bhairavainvisiblegrills.in/locations" />
         <meta property="og:title" content="Invisible Grills Across Andhra Pradesh | Bhairava" />
         <meta property="og:description" content="Invisible grills in AP cities — Vizag, Rajahmundry, Vijayawada, Guntur, Chittoor, Tirupati, Anantapur." />
