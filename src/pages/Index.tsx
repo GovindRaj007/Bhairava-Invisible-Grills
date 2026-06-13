@@ -16,7 +16,7 @@ const localBusinessJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
   name: BUSINESS.name,
-  description: 'Bhairava Invisible Grills provides best invisible grills installation in Visakhapatnam. Strong, secure stainless steel cable grills for balconies and windows. Also offers ceiling cloth hangers in Vizag.',
+  description: 'Bhairava Invisible Grills provides best invisible grills installation in Visakhapatnam. Strong, secure stainless steel cable grills for balconies and windows. Also serves in major cities across Andhra Pradesh and offers ceiling cloth hangers.',
   telephone: [BUSINESS.phone, BUSINESS.phone2],
   email: BUSINESS.email,
   address: {
