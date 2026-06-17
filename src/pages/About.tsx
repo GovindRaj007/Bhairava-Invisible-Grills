@@ -1,5 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import { BUSINESS, serviceCategories } from '@/data/services';
+import { trackCallClick } from '@/lib/utils';
 import { Shield, Eye, Users, Award, Clock, CheckCircle, Phone, Mail, MapPin } from 'lucide-react';
 import CTASection from '@/components/CTASection';
 import { useScrollRestoration } from '@/hooks/useScrollRestoration';
@@ -131,7 +132,7 @@ export default function About() {
               Get In Touch
             </h2>
             <div className="bg-card rounded-lg p-6 shadow-sm space-y-4">
-              <a href={`tel:${BUSINESS.phone}`} className="flex items-center gap-3 text-foreground hover:text-primary transition-colors">
+              <a href={`tel:${BUSINESS.phone}`} onClick={() => trackCallClick('about_page')} className="flex items-center gap-3 text-foreground hover:text-primary transition-colors">
                 <Phone className="w-5 h-5 text-primary" />
                 <span className="text-sm">{BUSINESS.phone}</span>
               </a>

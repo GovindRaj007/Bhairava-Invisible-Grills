@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Phone } from "lucide-react";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import { BUSINESS } from "@/data/services";
+import { trackCallClick, trackWhatsAppClick } from "@/lib/utils";
 
 export function FloatingCTA() {
   const [showWhatsApp, setShowWhatsApp] = useState(true);
@@ -19,11 +20,19 @@ export function FloatingCTA() {
 
   const label = showWhatsApp ? "Chat on WhatsApp" : "Call Now";
 
+  const handleClick = () => {
+    if (showWhatsApp) {
+      trackWhatsAppClick('floating_cta');
+    } else {
+      trackCallClick('floating_cta');
+    }
+  };
+
   return (
     <div className="fixed bottom-6 right-6 z-50">
       <a
         href={href}
-        data-track={showWhatsApp ? "whatsapp" : "call"}
+        onClick={handleClick}
         target={showWhatsApp ? "_blank" : undefined}
         rel={showWhatsApp ? "noopener noreferrer" : undefined}
         className="relative flex h-14 w-14 items-center justify-center rounded-full shadow-lg transition-all hover:scale-110 hover:shadow-xl overflow-hidden"

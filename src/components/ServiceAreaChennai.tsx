@@ -1,9 +1,14 @@
 import { useState } from 'react';
 import { BUSINESS } from '@/data/services';
+import { trackCallClick } from '@/lib/utils';
 import { Phone, Mail, MapPin, Clock, Map } from 'lucide-react';
 
 export default function ServiceAreaVisakhapatnam() {
   const [mapLoaded, setMapLoaded] = useState(false);
+
+  const handleCallClick = () => {
+    trackCallClick('service_area_section');
+  };
 
   return (
     <section className="section-dark py-16 md:py-24">
@@ -47,7 +52,7 @@ export default function ServiceAreaVisakhapatnam() {
               </h3>
               <div className="space-y-3 text-secondary-foreground/70 text-sm">
                 <p className="flex items-center gap-2"><MapPin className="w-4 h-4 text-primary" /> {BUSINESS.address}</p>
-                <p className="flex items-center gap-2"><Phone className="w-4 h-4 text-primary" /> <a href={`tel:${BUSINESS.phone}`} className="hover:text-primary">{BUSINESS.phone}</a></p>
+                <p className="flex items-center gap-2"><Phone className="w-4 h-4 text-primary" /> <a href={`tel:${BUSINESS.phone}`} onClick={handleCallClick} className="hover:text-primary">{BUSINESS.phone}</a></p>
                 <p className="flex items-center gap-2"><Mail className="w-4 h-4 text-primary" /> <a href={`mailto:${BUSINESS.email}`} className="hover:text-primary">{BUSINESS.email}</a></p>
                 <p className="flex items-center gap-2"><Clock className="w-4 h-4 text-primary" /> {BUSINESS.hours}</p>
               </div>

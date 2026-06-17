@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { getAllLocations } from '@/data/locations';
+import { trackCallClick } from '@/lib/utils';
 import { MapPin, Phone, Mail } from 'lucide-react';
 import { BUSINESS } from '@/data/services';
 import Breadcrumb from '@/components/Breadcrumb';
@@ -193,8 +194,8 @@ export default function LocationsIndex() {
                 <Phone className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
                 <div>
                   <h3 className="font-heading font-bold text-foreground mb-1">Call Us</h3>
-                  <p className="text-foreground text-lg"><a href={`tel:${BUSINESS.phone}`} className="hover:text-primary">{BUSINESS.phone}</a></p>
-                  <p className="text-foreground text-lg"><a href={`tel:${BUSINESS.phone2}`} className="hover:text-primary">{BUSINESS.phone2}</a></p>
+                  <p className="text-foreground text-lg"><a href={`tel:${BUSINESS.phone}`} onClick={() => trackCallClick('locations_index')} className="hover:text-primary">{BUSINESS.phone}</a></p>
+                  <p className="text-foreground text-lg"><a href={`tel:${BUSINESS.phone2}`} onClick={() => trackCallClick('locations_index')} className="hover:text-primary">{BUSINESS.phone2}</a></p>
                   <p className="text-muted-foreground text-sm mt-1">Available Mon-Sat, 9 AM - 7 PM</p>
                 </div>
               </div>

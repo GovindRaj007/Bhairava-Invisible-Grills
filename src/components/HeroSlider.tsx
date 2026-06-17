@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { serviceCategories } from '@/data/services';
 import { heroImages } from '@/data/images';
+import { trackCallClick } from '@/lib/utils';
 import { Phone } from 'lucide-react';
 import { BUSINESS } from '@/data/services';
 
@@ -56,6 +57,10 @@ export default function HeroSlider() {
     }
   };
 
+  const handleCallClick = () => {
+    trackCallClick('hero_slider');
+  };
+
   return (
     <section
       className="relative h-[100svh] min-h-[600px] max-h-[800px] md:min-h-[600px] md:max-h-[900px] w-full overflow-hidden"
@@ -98,7 +103,7 @@ export default function HeroSlider() {
                 {slide.subtext}
               </p>
               <div className="flex flex-wrap gap-3 mb-8">
-                <a href={`tel:${BUSINESS.phone}`} className="btn-golden flex items-center gap-2 text-sm md:text-base">
+                <a href={`tel:${BUSINESS.phone}`} onClick={handleCallClick} className="btn-golden flex items-center gap-2 text-sm md:text-base">
                   <Phone className="w-4 h-4" /> Call Now
                 </a>
                 <Link to={slide.link} className="btn-outline-charcoal text-sm md:text-base">

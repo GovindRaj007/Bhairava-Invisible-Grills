@@ -1,5 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import { BUSINESS, serviceCategories } from '@/data/services';
+import { trackCallClick, trackWhatsAppClick } from '@/lib/utils';
 import { Phone, Mail, Clock, CheckCircle, MapPin } from 'lucide-react';
 import Breadcrumb from '@/components/Breadcrumb';
 import { useState } from 'react';
@@ -372,7 +373,7 @@ export default function Contact() {
 
               <div className="space-y-4">
                 {/* Call */}
-                <a href={`tel:${BUSINESS.phone}`} data-track="call" className="flex items-center gap-4 rounded-xl bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-4 transition-all hover:shadow-lg hover:-translate-y-1">
+                <a href={`tel:${BUSINESS.phone}`} onClick={() => trackCallClick('contact_page')} className="flex items-center gap-4 rounded-xl bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-4 transition-all hover:shadow-lg hover:-translate-y-1">
                   <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/20">
                     <Phone className="h-6 w-6 text-primary" />
                   </div>
@@ -383,7 +384,7 @@ export default function Contact() {
                 </a>
 
                 {/* Call Secondary */}
-                <a href={`tel:${BUSINESS.phone2}`} data-track="call-secondary" className="flex items-center gap-4 rounded-xl bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-4 transition-all hover:shadow-lg hover:-translate-y-1">
+                <a href={`tel:${BUSINESS.phone2}`} onClick={() => trackCallClick('contact_page_secondary')} className="flex items-center gap-4 rounded-xl bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-4 transition-all hover:shadow-lg hover:-translate-y-1">
                   <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/20">
                     <Phone className="h-6 w-6 text-primary" />
                   </div>
@@ -394,7 +395,7 @@ export default function Contact() {
                 </a>
 
                 {/* WhatsApp */}
-                <a href={`https://wa.me/${BUSINESS.whatsapp}`} data-track="whatsapp" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 rounded-xl bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-4 transition-all hover:shadow-lg hover:-translate-y-1">
+                <a href={`https://wa.me/${BUSINESS.whatsapp}`} onClick={() => trackWhatsAppClick('contact_page')} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 rounded-xl bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-4 transition-all hover:shadow-lg hover:-translate-y-1">
                   <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#25D366]/20">
                     <WhatsAppIcon className="h-6 w-6 text-[#25D366]" />
                   </div>

@@ -1,12 +1,17 @@
 import { Link } from "react-router-dom";
 import { getAllFlatServices, BUSINESS } from "@/data/services";
 import { getAllLocations } from "@/data/locations";
+import { trackCallClick } from "@/lib/utils";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import BhairavaLogo from "@/assets/Bhairava-logo.jpg";
 
 export default function Footer() {
   const allServices = getAllFlatServices();
   const allLocations = getAllLocations();
+
+  const handleCallClick = () => {
+    trackCallClick('footer');
+  };
 
   return (
     <footer className="section-dark py-12 md:py-16">
@@ -35,6 +40,7 @@ export default function Footer() {
             <div className="flex flex-col gap-2 text-xs text-secondary-foreground/70 space-y-2">
               <a
                 href={`tel:${BUSINESS.phone}`}
+                onClick={handleCallClick}
                 className="flex items-center gap-2 hover:text-primary transition-colors"
               >
                 <Phone className="w-3.5 h-3.5 text-primary flex-shrink-0" /> 
@@ -42,6 +48,7 @@ export default function Footer() {
               </a>
               <a
                 href={`tel:${BUSINESS.phone2}`}
+                onClick={handleCallClick}
                 className="flex items-center gap-2 hover:text-primary transition-colors"
               >
                 <Phone className="w-3.5 h-3.5 text-primary flex-shrink-0" /> 

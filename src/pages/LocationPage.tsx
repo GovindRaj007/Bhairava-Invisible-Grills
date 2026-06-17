@@ -5,6 +5,7 @@ import FAQAccordion from '@/components/FAQAccordion';
 import CTASection from '@/components/CTASection';
 import LocationTestimonials from '@/components/LocationTestimonials';
 import { BUSINESS, serviceCategories } from '@/data/services';
+import { trackCallClick } from '@/lib/utils';
 import { getLocationBySlug, getAllLocations } from '@/data/locations';
 import { getTestimonialsByLocation } from '@/data/testimonials';
 import { heroImages } from '@/data/images';
@@ -171,8 +172,8 @@ export default function LocationPage() {
                 <div className="flex items-center gap-3">
                   <Phone className="w-5 h-5 text-primary flex-shrink-0" />
                   <div>
-                    <p className="text-foreground"><a href={`tel:${BUSINESS.phone}`} className="hover:text-primary">{BUSINESS.phone}</a></p>
-                    <p className="text-foreground"><a href={`tel:${BUSINESS.phone2}`} className="hover:text-primary">{BUSINESS.phone2}</a></p>
+                    <p className="text-foreground"><a href={`tel:${BUSINESS.phone}`} onClick={() => trackCallClick('location_page')} className="hover:text-primary">{BUSINESS.phone}</a></p>
+                    <p className="text-foreground"><a href={`tel:${BUSINESS.phone2}`} onClick={() => trackCallClick('location_page')} className="hover:text-primary">{BUSINESS.phone2}</a></p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
